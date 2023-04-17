@@ -1,0 +1,14 @@
+SHOU_YE_ACCOUNT: /html/body/div/div/div/div[1]/form/div[3]/input
+SHOU_YE_PASSWORD: /html/body/div/div/div/div[1]/form/div[4]/div/input
+SHOU_YE_LOGIN_BUTTON: /html/body/div/div/div/div[1]/form/div[6]/div/button
+PAGE_LOGIN_NAME: /html/body/div[1]/div/div/div[2]/div[1]/div[1]/div[1]/div[3]/div[2]/div/div/div/div/span
+# ------------  Menu List --------------
+MENU_HOUSING_RESOURCES: /html/body/div[1]/div/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/div
+MENU_WHOLE_MANAGEMENT: /html/body/div[1]/div/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/ul/div[1]/a/li/span
+TAG_NAME_WHOLE_MANAGEMENT: /html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/a[2]
+# ------------  Register Landlord --------------
+REGISTER_LANDLORD_JS: document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div.display-flex.space-between.align-items-center > div.dengjistyle > button.el-button.sonstyle.el-button--primary.el-button--medium").click()
+FANG_DONG_PAGE_BASE : return document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > div:nth-child(1) > span").innerText
+# ------------ input information Landlord ---------------
+FANG_DONG_SHOP_FRONT: document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > div:nth-child(2) > div:nth-child(1) > div > div > div > div > div.el-input.el-input--small.el-input--suffix > input").click()
+FANG_DONG_SHOP_FRONT_NODES: document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li:nth-child(1)").click()
