@@ -31,5 +31,4 @@ if __name__ == '__main__':
     fp = open(report_abspath, "wb")
     runner = HTMLTestRunnerNew.HTMLTestRunner(stream=fp,title=r'寓软通界面自动化测试报告,测试结果：',description=r'整租(登记房东)用例执行情况：',tester='王龙龙')
     # 4、调用add_case函数返回值
-    runner.run(all_case())
-    fp.close()
+
