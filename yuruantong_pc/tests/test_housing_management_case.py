@@ -67,7 +67,10 @@ class wholeManagementCase(unittest.TestCase):
         dian_mian_random = random.randint(1,21)
 
         # shopfront_value = self.element["FANG_DONG_SHOP_FRONT_NODES"]
-        shopfront_value = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li:nth-child({dian_mian_random})").click()'
+        shopfront_value = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
+                          f'wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > ' \
+                          f'div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li:nth-child(' \
+                          f'{dian_mian_random})").click()'
         self.driver.execute_script(shopfront_value)
 
         # 生成随机字母
