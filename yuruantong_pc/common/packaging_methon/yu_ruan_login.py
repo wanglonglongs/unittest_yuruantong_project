@@ -2,14 +2,13 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from yuruantong_pc.utilities.yaml_helper import YamlHelper
+from yuruantong_pc.common.yaml_helper import YamlHelper
 
 
 class LoginPage:
     def __init__(self, driver):
         self.driver = driver
-        self.element_locator_yaml = r'D:\util\python_project\unittest_yuruantong_project\yuruantong_pc\configs' \
-                                    r'\element_locator\fang_dong_login.yaml '
+        self.element_locator_yaml = '../configs/element_locator/fang_dong_login.yaml'
         self.element = YamlHelper.read_yaml(self.element_locator_yaml)
         self.wait = WebDriverWait(self.driver, 10, poll_frequency=0.5)
 

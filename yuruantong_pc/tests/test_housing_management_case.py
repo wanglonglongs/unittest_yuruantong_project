@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from yuruantong_pc.utilities.yaml_helper import YamlHelper
+from yuruantong_pc.common.yaml_helper import YamlHelper
 from yuruantong_pc.common.packaging_methon.yu_ruan_login import LoginPage
 import random
 
@@ -18,8 +18,7 @@ class wholeManagementCase(unittest.TestCase):
         # 创建Chrome浏览器对象
         cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
-        cls.element_locator_yaml = r'D:\util\python_project\unittest_yuruantong_project\yuruantong_pc\configs' \
-                                   r'\element_locator\fang_dong_login.yaml '
+        cls.element_locator_yaml = '../configs/element_locator/fang_dong_login.yaml '
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
 
