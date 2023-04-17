@@ -5,18 +5,19 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+from yuruantong_pc.common.error_screenshot import Screen
 from yuruantong_pc.common.yaml_helper import YamlHelper
 from yuruantong_pc.common.packaging_methon.yu_ruan_login import LoginPage
 import random
 
 
 class wholeManagementCase(unittest.TestCase):
-    
 
+    driver = webdriver.Chrome()
     @classmethod
     def setUpClass(cls):
         # 创建Chrome浏览器对象
-        cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
         cls.element_locator_yaml = '../configs/element_locator/fang_dong_login.yaml '
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
@@ -29,6 +30,7 @@ class wholeManagementCase(unittest.TestCase):
         # 调用login()方法
         login_page.login("18196627126","aaaa123456")
 
+    @Screen(driver=driver)
     def test_openTag_page(self):
         # 点击菜单选项栏-房源
         self.wait.until(EC.presence_of_element_located(
@@ -57,6 +59,7 @@ class wholeManagementCase(unittest.TestCase):
         self.assertEqual("基本信息" in basic_information_result, True)
         time.sleep(2)
 
+    @Screen(driver=driver)
     def test_register_landlord_information(self):
         # 所属店面下拉展开
         select_shopfront_option = self.element["FANG_DONG_SHOP_FRONT"]
@@ -95,11 +98,13 @@ class wholeManagementCase(unittest.TestCase):
                                   'div:nth-child(2) > div:nth-child(7) > div > div > div > div > ' \
                                   'div.el-input.el-input--small.el-input--suffix > input").click()'
         self.driver.execute_script(select_property_address)
-        time.sleep(2)
+
         click1 = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div:nth-child(7) > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul").click()'
         self.driver.execute_script(click1)
+
         property_address_value = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div:nth-child(7) > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li.el-select-dropdown__item.selected.hover > span").click()'
         self.driver.execute_script(property_address_value)
+
         # # 建筑面积
         # input_build_area = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
         #                    'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > ' \
