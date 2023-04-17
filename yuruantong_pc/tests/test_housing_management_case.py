@@ -5,8 +5,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from yuruantong_pc.common.error_screenshot import Screen
+from yuruantong_pc.common.my_logger import MyLogger
 from yuruantong_pc.common.yaml_helper import YamlHelper
 from yuruantong_pc.common.packaging_methon.yu_ruan_login import LoginPage
 import random
@@ -15,6 +15,7 @@ import random
 class wholeManagementCase(unittest.TestCase):
 
     driver = webdriver.Chrome()
+    log = MyLogger().get_logger(__name__)
     @classmethod
     def setUpClass(cls):
         # 创建Chrome浏览器对象
@@ -29,7 +30,7 @@ class wholeManagementCase(unittest.TestCase):
 
         # 调用login()方法
         login_page.login("18196627126","aaaa123456")
-
+    log.debug()
     @Screen(driver=driver)
     def test_openTag_page(self):
         # 点击菜单选项栏-房源
@@ -44,6 +45,7 @@ class wholeManagementCase(unittest.TestCase):
         # 验证当前已经打开整租页标签
         jump_housing_results = self.wait.until(EC.presence_of_element_located((By.XPATH,self.element["TAG_NAME_WHOLE_MANAGEMENT"]))).get_attribute('text')
         self.assertEqual("整租管理" in jump_housing_results, True)
+    log.debug()
 
     def test_pen_register_landlord(self):
         time.sleep(2)
