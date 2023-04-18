@@ -30,7 +30,8 @@ class wholeManagementCase(unittest.TestCase):
 
         # 调用login()方法
         login_page.login("18196627126","aaaa123456")
-    log.debug()
+    log.debug("这个是登录调用的方法")
+
     @Screen(driver=driver)
     def test_openTag_page(self):
         # 点击菜单选项栏-房源

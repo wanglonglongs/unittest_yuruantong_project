@@ -7,14 +7,13 @@ import traceback
 from collections import OrderedDict
 from multiprocessing.pool import ThreadPool
 import time
-
-from common.customize_error import RunTimeTooLong
-from common.html_reporter import generate_html_report, format_time
-from common.my_logger import MyLogger
-from common.test_case_finder import DiscoverTestCases
-from common.test_filter import TestFilter
-from common.user_options import parse_options
-from configs.global_config import init, set_config, get_config
+from yuruantong_pc.common.customize_error import RunTimeTooLong
+from yuruantong_pc.common.html_reporter import generate_html_report, format_time
+from yuruantong_pc.common.my_logger import MyLogger
+from yuruantong_pc.common.test_case_finder import DiscoverTestCases
+from yuruantong_pc.common.test_filter import TestFilter
+from yuruantong_pc.common.user_options import parse_options
+from yuruantong_pc.configs.global_config import init, set_config, get_config
 
 # 定义测试运行成功、失败、错误、以及忽略的测试用例集
 cases_run_success = []

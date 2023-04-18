@@ -1,2 +1,2 @@
-DOMAIN = "https://www.qa.baidu.com"
-Account = {"username": "kevin_QA", "password":"iTesting"}
+DOMAIN = "http://test.yuruantong.com/amp/?wholeManagement"
+Account = {"username": "18196627126", "password": "aaaa123456"}
