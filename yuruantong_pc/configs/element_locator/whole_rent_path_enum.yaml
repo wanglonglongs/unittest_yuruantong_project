@@ -1,0 +1,12 @@
+# ------------  Lease status not rent search  --------------
+LEASE_STATUS: document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(2) > div > div > div > input").click()
+LEASE_STATUS_CHOOSE: document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li:nth-child(1)").click()
+LEASE_STATUS_SEARCH: document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(5) > button.el-button.el-button--danger.el-button--mini").click()
+
+# ------------  registered tenant correlation --------------
+REGISTER_TENANT_BUTTON: document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > section > main > div.el-card.table-container.is-never-shadow > div > div > div > div.el-table__fixed-right > div.el-table__fixed-body-wrapper > table > tbody > tr:nth-child(1) > td.el-table_1_column_24.is-center.el-table__cell > div > div:nth-child(1) > button").click()
+
+TENANT_NAME: document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div.registerTenlentStyle > div > div.container > div.formStyle > form > div:nth-child(4) > div:nth-child(1) > div > div > div > div > input").value
+TENANT_IDENTITY_CARD:
+TENANT_PHONE:
+TENANT_URGENCY_PHONE:
