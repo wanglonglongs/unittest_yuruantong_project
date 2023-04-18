@@ -8,19 +8,22 @@ from selenium.webdriver.support import expected_conditions as EC
 from yuruantong_pc.common.yaml_helper import YamlHelper
 from yuruantong_pc.common.packaging_methon.yu_ruan_login import LoginPage
 import random
+from yuruantong_pc.common.error_screenshot import Screen
 
 
 class registeredTenantCase(unittest.TestCase):
 
+    driver = webdriver.Chrome()
+
     @classmethod
     def setUpClass(cls):
         # 创建Chrome浏览器对象
-        cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
         cls.element_locator_yaml = '../configs/element_locator/fang_dong_login.yaml '
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
 
+    @Screen(driver=driver)
     def test_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
@@ -28,6 +31,7 @@ class registeredTenantCase(unittest.TestCase):
         # 调用login()方法
         login_page.login("18196627126", "aaaa123456")
 
+    @Screen(driver=driver)
     def test_openTag_page(self):
         # 点击菜单选项栏-房源
         self.wait.until(EC.presence_of_element_located(
@@ -44,6 +48,8 @@ class registeredTenantCase(unittest.TestCase):
         self.assertEqual("整租管理" in jump_housing_results, True)
 
         time.sleep(5)
+
+    @Screen(driver=driver)
     def test_zuLinStatus(self):
         input_block_number = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(2) > div > div > div > input").click()'
         self.driver.execute_script(input_block_number)

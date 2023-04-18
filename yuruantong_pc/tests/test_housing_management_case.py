@@ -23,6 +23,7 @@ class wholeManagementCase(unittest.TestCase):
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
 
+    @Screen(driver=driver)
     def test_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
@@ -45,6 +46,7 @@ class wholeManagementCase(unittest.TestCase):
         jump_housing_results = self.wait.until(EC.presence_of_element_located((By.XPATH,self.element["TAG_NAME_WHOLE_MANAGEMENT"]))).get_attribute('text')
         self.assertEqual("整租管理" in jump_housing_results, True)
 
+    @Screen(driver=driver)
     def test_pen_register_landlord(self):
         time.sleep(2)
         # 通过JS代码定位并点击元素 [点击登记房东]
