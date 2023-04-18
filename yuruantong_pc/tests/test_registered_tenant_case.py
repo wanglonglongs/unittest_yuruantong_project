@@ -50,15 +50,22 @@ class registeredTenantCase(unittest.TestCase):
         time.sleep(5)
 
     @Screen(driver=driver)
+    # 租赁状态 未租选择
     def test_zuLinStatus(self):
-        input_block_number = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(2) > div > div > div > input").click()'
-        self.driver.execute_script(input_block_number)
+        # 租赁状态下拉
+        lease_status = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(2) > div > div > div > input").click()'
+        self.driver.execute_script(lease_status)
 
-        # input_block_number2 = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li.el-select-dropdown__item.hover > span").click()'
-        # self.driver.execute_script(input_block_number2)
+        # 未租下拉选择
+        lease_status_choose = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li:nth-child(1)").click()'
+        self.driver.execute_script(lease_status_choose)
 
-        # sousuo = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(5) > button.el-button.el-button--danger.el-button--mini > span").click()'
-        # self.driver.execute_script(sousuo)
+        # 搜索
+        search = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(5) > button.el-button.el-button--danger.el-button--mini").click()'
+        self.driver.execute_script(search)
+
+
+
     @classmethod
     def tearDownClass(cls):
         time.sleep(5)
