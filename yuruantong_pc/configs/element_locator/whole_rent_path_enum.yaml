@@ -6,7 +6,4 @@ LEASE_STATUS_SEARCH: document.querySelector("#mainDiv > div > div.hasTagsView.ma
 # ------------  registered tenant correlation --------------
 REGISTER_TENANT_BUTTON: document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > section > main > div.el-card.table-container.is-never-shadow > div > div > div > div.el-table__fixed-right > div.el-table__fixed-body-wrapper > table > tbody > tr:nth-child(1) > td.el-table_1_column_24.is-center.el-table__cell > div > div:nth-child(1) > button").click()
 
-TENANT_NAME: document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div.registerTenlentStyle > div > div.container > div.formStyle > form > div:nth-child(4) > div:nth-child(1) > div > div > div > div > input").value
-TENANT_IDENTITY_CARD:
-TENANT_PHONE:
-TENANT_URGENCY_PHONE:
+
