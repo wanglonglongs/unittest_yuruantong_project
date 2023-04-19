@@ -9,6 +9,7 @@ from yuruantong_pc.common.error_screenshot import Screen
 from yuruantong_pc.common.yaml_helper import YamlHelper
 from yuruantong_pc.common.packaging_methon.yu_ruan_login import LoginPage
 import random
+from nb_log import get_logger
 
 
 class wholeManagementCase(unittest.TestCase):
@@ -22,6 +23,7 @@ class wholeManagementCase(unittest.TestCase):
         cls.element_locator_yaml = '../configs/element_locator/fang_dong_login.yaml '
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
+        cls.logger = get_logger('登记房东')
 
     @Screen(driver=driver)
     def test_login_yuRuanTong(self):
@@ -30,6 +32,9 @@ class wholeManagementCase(unittest.TestCase):
 
         # 调用login()方法
         login_page.login("18196627126","aaaa123456")
+        # logger.info('登录成功')
+
+        self.logger.info("登录寓软通账号成功")
 
     @Screen(driver=driver)
     def test_openTag_page(self):
@@ -45,6 +50,7 @@ class wholeManagementCase(unittest.TestCase):
         # 验证当前已经打开整租页标签
         jump_housing_results = self.wait.until(EC.presence_of_element_located((By.XPATH,self.element["TAG_NAME_WHOLE_MANAGEMENT"]))).get_attribute('text')
         self.assertEqual("整租管理" in jump_housing_results, True)
+        self.logger.info("打开整租管理页面成功")
 
     @Screen(driver=driver)
     def test_pen_register_landlord(self):
@@ -60,6 +66,8 @@ class wholeManagementCase(unittest.TestCase):
         # 文字判断是否出现 [基本信息]
         self.assertEqual("基本信息" in basic_information_result, True)
         time.sleep(2)
+
+        self.logger.info("打开登录房东页面成功")
 
     @Screen(driver=driver)
     def test_register_landlord_information(self):
@@ -101,11 +109,11 @@ class wholeManagementCase(unittest.TestCase):
                                   'div.el-input.el-input--small.el-input--suffix > input").click()'
         self.driver.execute_script(select_property_address)
 
-        click1 = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div:nth-child(7) > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul").click()'
-        self.driver.execute_script(click1)
-
-        property_address_value = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div:nth-child(7) > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li.el-select-dropdown__item.selected.hover > span").click()'
-        self.driver.execute_script(property_address_value)
+        # click1 = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div:nth-child(7) > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul").click()'
+        # self.driver.execute_script(click1)
+        #
+        # property_address_value = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div:nth-child(7) > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li.el-select-dropdown__item.selected.hover > span").click()'
+        # self.driver.execute_script(property_address_value)
 
         # # 建筑面积
         # input_build_area = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
