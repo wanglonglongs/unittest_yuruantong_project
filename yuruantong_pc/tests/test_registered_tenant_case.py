@@ -11,6 +11,7 @@ import random
 from yuruantong_pc.common.error_screenshot import Screen
 import string
 import datetime
+from nb_log import get_logger
 
 
 class registeredTenantCase(unittest.TestCase):
@@ -26,6 +27,7 @@ class registeredTenantCase(unittest.TestCase):
         cls.element_locator_whole_yaml = '../configs/element_locator/whole_rent_path_enum.yaml'
         cls.element_whole = YamlHelper.read_yaml(cls.element_locator_whole_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
+        cls.logger = get_logger('登记房东')
 
     @Screen(driver=driver)
     def test_login_yuRuanTong(self):
@@ -34,6 +36,7 @@ class registeredTenantCase(unittest.TestCase):
 
         # 调用login()方法
         login_page.login("18196627126", "aaaa123456")
+        self.logger.info("登记租客成功")
 
     @Screen(driver=driver)
     def test_openTag_page(self):
