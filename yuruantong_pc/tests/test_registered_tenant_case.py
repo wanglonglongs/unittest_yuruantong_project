@@ -36,6 +36,7 @@ class registeredTenantCase(unittest.TestCase):
 
         # 调用login()方法
         login_page.login("18196627126", "aaaa123456")
+        self.logger.info("登记租客成功")
 
     @Screen(driver=driver)
     def test_openTag_page(self):
