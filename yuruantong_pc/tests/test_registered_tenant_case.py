@@ -119,6 +119,7 @@ class registeredTenantCase(unittest.TestCase):
                       f'form > div:nth-child(4) > div:nth-child(1) > div > ' \
                       f'div > div > div > input").value = "{random_string_number(free_random_one_num(8,10))}" '
         self.driver.execute_script(tenant_name)
+        self.logger.info("租客姓名")
 
         # 证件选择（要先点开下拉框 再去选择）
         identity_card_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > ' \
@@ -127,13 +128,15 @@ class registeredTenantCase(unittest.TestCase):
                                f'div:nth-child(4) > div:nth-child(2) > div > div.el-select.el-select--medium > div > ' \
                                f'input").click()'
         self.driver.execute_script(identity_card_input)
+        self.logger.info("证件点击")
 
         # 默认台胞证
         identity_card_choose = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > ' \
                                 f'div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper ' \
                                 f'> div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > ' \
-                                f'li:nth-child({free_random_one_num(3,3)}) > span").click()'
+                                f'li:nth-child(3) > span").click()'
         self.driver.execute_script(identity_card_choose)
+        self.logger.info("证件选择")
 
         # 证件号码 台胞证>8位
         identity_card = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
@@ -142,6 +145,7 @@ class registeredTenantCase(unittest.TestCase):
                         f'form > div:nth-child(4) > div:nth-child(2) > div > ' \
                         f'div.el-input.el-input--medium > input").value = "{free_random_many_num(free_random_one_num(8,11))}"'
         self.driver.execute_script(identity_card)
+        self.logger.info("证件号码输入")
 
         # 联系电话
         phone = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
@@ -149,6 +153,7 @@ class registeredTenantCase(unittest.TestCase):
                        f'div.registerTenlentStyle > div > div.container > div.formStyle > form > div:nth-child(4) > ' \
                        f'div:nth-child(3) > div > div > div > div > input").value = "{random_create_phone()}"'
         self.driver.execute_script(phone)
+        self.logger.info("联系电话")
 
         # 紧急联系电话
         urgency_phone = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
@@ -156,6 +161,23 @@ class registeredTenantCase(unittest.TestCase):
                         f'div.registerTenlentStyle > div > div.container > div.formStyle > form > div:nth-child(4) > ' \
                         f'div:nth-child(4) > div > div > div > div > input").value = "{random_create_phone()}"'
         self.driver.execute_script(urgency_phone)
+        self.logger.info("证件点击")
+
+        # 业务人员
+        business_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
+                         f'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
+                         f'div.registerTenlentStyle > div > div.container > div.formStyle > form > div:nth-child(5) > ' \
+                         f'div:nth-child(1) > div > div > div > div > div > input").click()'
+        self.driver.execute_script(business_input)
+        self.logger.info("业务人员点击")
+        time.sleep(1)
+        business_choose = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
+                          f'wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > ' \
+                          f'div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > ' \
+                          f'li:nth-child({free_random_one_num(1,20)}) > span")'
+        print(business_choose)
+        self.driver.execute_script(business_choose)
+        self.logger.info("业务人员下拉")
 
         # 开始时间 结束时间默认
         # 租赁期限-年
@@ -165,6 +187,7 @@ class registeredTenantCase(unittest.TestCase):
                                 f'div:nth-child(7) > div.el-col.el-col-10 > div > div > div > div:nth-child(1) > div ' \
                                 f'> div > input").click()'
         self.driver.execute_script(lease_time_year_input)
+        self.logger.info("租赁期限年点击")
 
         # 下拉随机选择
         second = [2, 3, 5, 6][random.randint(0, 3)]
@@ -174,9 +197,9 @@ class registeredTenantCase(unittest.TestCase):
                                  f'div.el-select-dropdown.el-popper > div.el-scrollbar > ' \
                                  f'div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > ' \
                                  f'li:nth-child({free_random_one_num(2,6)}) > span").click()'
-
         print(lease_time_year_choose)
         self.driver.execute_script(lease_time_year_choose)
+        self.logger.info("租赁期限年下拉")
 
         # 租赁期限-月
         lease_time_month_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section ' \
@@ -186,6 +209,7 @@ class registeredTenantCase(unittest.TestCase):
                                  f'div.gridGap.el-col.el-col-6.el-col-offset-1 > div > ' \
                                  f'div.el-input.el-input--medium.el-input--suffix > input").click()'
         self.driver.execute_script(lease_time_month_input)
+        self.logger.info("租赁期限月点击")
 
         # 下拉随机选择
         lease_time_month_choose = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section ' \
@@ -193,20 +217,27 @@ class registeredTenantCase(unittest.TestCase):
                                   f'div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > ' \
                                   f'li:nth-child({free_random_one_num(1,11)}) > span").click()'
         self.driver.execute_script(lease_time_month_choose)
+        self.logger.info("租赁期限月下拉")
+        time.sleep(1)
 
         # 缴费方式
         payment_type_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > ' \
                              f'div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
                              f'div.registerTenlentStyle > div > div.container > div.formStyle > form > div:nth-child(' \
-                             f'8) > div:nth-child(1) > div > div > div > div.el-col.el-col-17 > div > div > input")'
+                             f'8) > div:nth-child(1) > div > div > div > div.el-col.el-col-17 >' \
+                             f' div > div > input").click()'
         self.driver.execute_script(payment_type_input)
+        self.logger.info("缴费方式点击")
+        time.sleep(1)
 
         # 下拉随机选择
         payment_type_choose = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > ' \
-                              f'div > wujie-app").shadowRoot.querySelector("body > div:nth-child(5) > ' \
+                              f'div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > ' \
                               f'div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > ' \
                               f'li:nth-child({free_random_one_num(1,5)}) > span").click()'
         self.driver.execute_script(payment_type_choose)
+        self.logger.info("缴费方式下拉")
+        time.sleep(1)
 
         # 出房价格 随机生成4位数
         leave_price = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
@@ -215,7 +246,8 @@ class registeredTenantCase(unittest.TestCase):
                       f'div:nth-child(2) > div > div > div > div.el-col.el-col-17 > div > input")' \
                       f'.value = "{free_random_many_num(4)}"'
         self.driver.execute_script(leave_price)
-        time.sleep(2)
+        self.logger.info("出房价格")
+        time.sleep(1)
 
         # 房屋押金 点击按钮生成
         house_deposit = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
@@ -224,32 +256,28 @@ class registeredTenantCase(unittest.TestCase):
                         f'div:nth-child(3) > div > div > div > div.el-col.el-col-16 > div > input")' \
                         f'.value = "{free_random_many_num(4)}"'
         self.driver.execute_script(house_deposit)
+        self.logger.info("房屋押金")
+        time.sleep(1)
 
-        # 提交缴费天数
-        payment_advance_day_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > ' \
-                                    f'section > div > wujie-app").shadowRoot.querySelector("#app > div > ' \
-                                    f'div:nth-child(2) > div > div.registerTenlentStyle > div > div.container > ' \
-                                    f'div.formStyle > form > div:nth-child(8) > div:nth-child(4) > div > div > div > ' \
-                                    f'div.gridGap.el-col.el-col-12.el-col-offset-1 > div > div > input").click()'
-        self.driver.execute_script(payment_advance_day_input)
-
-        # 下拉随机选择
+        # 提交缴费天数 点击
         payment_advance_day_choose = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > ' \
-                                     f'section > div > wujie-app").shadowRoot.querySelector("body > div:nth-child(6) ' \
-                                     f'> div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > ' \
-                                     f'li:nth-child({free_random_one_num(1,28)}) > span").click()'
+                                     f'section > div > wujie-app").shadowRoot.querySelector("#app > div > ' \
+                                     f'div:nth-child(2) > div > div.registerTenlentStyle > div > div.container > ' \
+                                     f'div.formStyle > form > div:nth-child(8) > div:nth-child(4) > div > div > div > ' \
+                                     f'div.el-col.el-col-10.el-col-offset-1 > div > span:nth-child(1)").click()'
         self.driver.execute_script(payment_advance_day_choose)
+        self.logger.info("提交缴费天数点击")
+        time.sleep(2)
 
-        time.sleep(3)
         # 点击下一步
-        next_tenant = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
-                      f'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
-                      f'div.registerTenlentStyle > div > div.container > div.footer > ' \
-                      f'button.el-button.submlitIcon.el-button--danger.el-button--mini").click()'
-        self.driver.execute_script(next_tenant)
+        # next_tenant = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
+        #               f'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
+        #               f'div.registerTenlentStyle > div > div.container > div.footer > ' \
+        #               f'button.el-button.submlitIcon.el-button--danger.el-button--mini").click()'
+        # self.driver.execute_script(next_tenant)
 
     @classmethod
     def tearDownClass(cls):
-        time.sleep(20)
+        time.sleep(10)
         # 关闭浏览器对象
         cls.driver.quit()
