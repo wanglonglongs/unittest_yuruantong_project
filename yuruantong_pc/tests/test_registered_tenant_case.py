@@ -59,7 +59,7 @@ class registeredTenantCase(unittest.TestCase):
 
     # 租赁状态 未租选择
     @Screen(driver=driver)
-    def test_zuLinStatus(self):
+    def test_zuLinStatu(self):
         # 租赁状态下拉
         lease_status = self.element_whole["LEASE_STATUS"]
         self.driver.execute_script(lease_status)
