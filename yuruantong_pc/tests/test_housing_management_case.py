@@ -9,7 +9,7 @@ from yuruantong_pc.common.error_screenshot import Screen
 from yuruantong_pc.common.yaml_helper import YamlHelper
 from yuruantong_pc.common.packaging_methon.yu_ruan_login import LoginPage
 import random
-from nb_log import get_logger
+from nb_log import LogManager
 
 
 class wholeManagementCase(unittest.TestCase):
@@ -23,7 +23,7 @@ class wholeManagementCase(unittest.TestCase):
         cls.element_locator_yaml = '../configs/element_locator/fang_dong_login.yaml '
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
-        cls.logger = get_logger('登记房东')
+        cls.logger = LogManager('登记房东').get_logger_and_add_handlers(10,log_filename='登记房东.log')
 
     @Screen(driver=driver)
     def test_login_yuRuanTong(self):
