@@ -84,6 +84,7 @@ class wholeManagementCase(unittest.TestCase):
                           f'wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > ' \
                           f'div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li:nth-child(' \
                           f'{dian_mian_random})").click()'
+        print(shopfront_value)
         self.driver.execute_script(shopfront_value)
 
         # 生成随机字母

@@ -1,7 +1,6 @@
 from nb_log import get_logger, LogManager
 logger = LogManager('test').get_logger_and_add_handlers(10,log_filename='tests.log')
 # logger = get_logger('lalala',log_filename='lalala.log',formatter_template=5,log_file_handler_type=2) # get_logger有很多其他入参可以自由定制logger。
-
 logger.debug(f'debug是绿色，说明是调试的，代码ok ')
 logger.info('info是天蓝色，日志正常 ')
 logger.warning('黄色yello，有警告了 ')
