@@ -115,9 +115,6 @@ class registeredTenantCase(unittest.TestCase):
             return "1{}{}".format(second, suffix)
         print(random_create_phone())
 
-
-        # ActionChains(self.driver).move_by_offset(782, 456).click().perform()
-
         # 租客姓名
         tenant_test = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
                       f'wujie-app").shadowRoot.querySelector("#app > div > ' \
@@ -185,16 +182,6 @@ class registeredTenantCase(unittest.TestCase):
                          f'div:nth-child(1) > div > div > div > div.el-select.newInputLi.el-select--medium > div > ' \
                          f'input").value = "王龙龙"'
         self.driver.execute_script(business_input)
-        # business_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > div.registerTenlentStyle > div > div.container > div.formStyle > form > div:nth-child(5) > div:nth-child(1) > div > div > div > div.el-select.newInputLi.el-select--medium > div > input").click()'
-        # self.driver.execute_script(business_input)
-        # self.logger.info("业务人员点击")
-        # time.sleep(3)
-        #
-        # # 业务人员选择
-        # business_choose = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li:nth-child(1) > span").click()'
-        # print(business_choose)
-        # self.driver.execute_script(business_choose)
-        # self.logger.info("业务人员下拉")
 
         # 开始时间 结束时间默认
         lease_time = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
@@ -203,47 +190,6 @@ class registeredTenantCase(unittest.TestCase):
                      f'div.el-col.el-col-10 > div > div > div > div:nth-child(3) > div > span:nth-child(2)").click()'
         self.driver.execute_script(lease_time)
 
-        # # 租赁期限-年
-        # lease_time_year_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > ' \
-        #                         f'div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
-        #                         f'div.registerTenlentStyle > div > div.container > div.formStyle > form > ' \
-        #                         f'div:nth-child(7) > div.el-col.el-col-10 > div > div > div > div:nth-child(1) > div ' \
-        #                         f'> div > input").click()'
-        # self.driver.execute_script(lease_time_year_input)
-        # self.logger.info("租赁期限年点击")
-        #
-        # # 下拉随机选择
-        # second = [2, 3, 5, 6][random.randint(0, 3)]
-        # print(second)
-        # lease_time_year_choose = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section ' \
-        #                          f'> div > wujie-app").shadowRoot.querySelector("body > ' \
-        #                          f'div.el-select-dropdown.el-popper > div.el-scrollbar > ' \
-        #                          f'div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > ' \
-        #                          f'li:nth-child(3) > span").click()'
-        # print(lease_time_year_choose)
-        # self.driver.execute_script(lease_time_year_choose)
-        # self.logger.info("租赁期限年下拉")
-        #
-        # # 租赁期限-月
-        # lease_time_month_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section ' \
-        #                          f'> div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div ' \
-        #                          f'> div.registerTenlentStyle > div > div.container > div.formStyle > form > ' \
-        #                          f'div:nth-child(7) > div.el-col.el-col-10 > div > div > div > ' \
-        #                          f'div.gridGap.el-col.el-col-6.el-col-offset-1 > div > ' \
-        #                          f'div.el-input.el-input--medium.el-input--suffix > input").click()'
-        # self.driver.execute_script(lease_time_month_input)
-        # self.logger.info("租赁期限月点击")
-        #
-        # # 下拉随机选择
-        # lease_time_month_choose = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section ' \
-        #                           f'> div > wujie-app").shadowRoot.querySelector("body > ' \
-        #                           f'div.el-select-dropdown.el-popper > div.el-scrollbar > ' \
-        #                           f'div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li:nth-child(3) > ' \
-        #                           f'span").click()'
-        # self.driver.execute_script(lease_time_month_choose)
-        # self.logger.info("租赁期限月下拉")
-        # time.sleep(1)
-
         # 缴费方式
         payment_type = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
                        f'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
@@ -251,24 +197,6 @@ class registeredTenantCase(unittest.TestCase):
                        f'div:nth-child(1) > div > div > div > div.el-col.el-col-5.el-col-offset-1 > div > ' \
                        f'span").click()'
         self.driver.execute_script(payment_type)
-
-        # payment_type_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > ' \
-        #                      f'div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
-        #                      f'div.registerTenlentStyle > div > div.container > div.formStyle > form > div:nth-child(' \
-        #                      f'8) > div:nth-child(1) > div > div > div > div.el-col.el-col-17 >' \
-        #                      f' div > div > input").click()'
-        # self.driver.execute_script(payment_type_input)
-        # self.logger.info("缴费方式点击")
-        # time.sleep(1)
-        #
-        # # 下拉随机选择
-        # payment_type_choose = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > ' \
-        #                       f'div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > ' \
-        #                       f'div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > ' \
-        #                       f'li:nth-child(3) > span").click()'
-        # self.driver.execute_script(payment_type_choose)
-        # self.logger.info("缴费方式下拉")
-        # time.sleep(1)
 
         # 出房价格 随机生成4位数
         leave_price = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
@@ -299,15 +227,13 @@ class registeredTenantCase(unittest.TestCase):
         self.driver.execute_script(payment_advance_day_choose)
         self.logger.info("提交缴费天数点击")
 
-
         other_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
                       f'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
                       f'div.registerTenlentStyle > div > div.container > div.formStyle > form > div:nth-child(11) > ' \
                       f'div:nth-child(1) > div > div > div > div > input")'
         self.driver.execute_script(other_input)
         time.sleep(2)
-        ActionChains(self.driver).move_by_offset(1055, 545).click().perform()
-        time.sleep(2)
+
         # 点击下一步
         next_tenant = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
                       f'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
