@@ -1,5 +1,6 @@
 import random
 import string
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 # 随机生成 某区间 内的任意一个整数
@@ -43,3 +44,12 @@ def random_create_phone():
 
 
 # print(random_create_phone())
+
+def perform_action(driver, offset_x, offset_y, click=True, reset=False):
+    actions = ActionChains(driver)
+    actions.move_by_offset(offset_x, offset_y)
+    if click:
+        actions.click()
+    actions.perform()
+    if reset:
+        actions.reset_actions()

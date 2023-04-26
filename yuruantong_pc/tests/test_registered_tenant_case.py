@@ -14,6 +14,7 @@ import string
 import datetime
 from nb_log import get_logger
 from selenium.webdriver.support.ui import Select
+from yuruantong_pc.common.packaging_methon.yu_ruan_common import perform_action
 
 
 class registeredTenantCase(unittest.TestCase):
@@ -114,14 +115,11 @@ class registeredTenantCase(unittest.TestCase):
             return "1{}{}".format(second, suffix)
         print(random_create_phone())
 
-        # 租客姓名
-        tenant_test = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
-                      f'wujie-app").shadowRoot.querySelector("#app > div > ' \
-                      f'div:nth-child(2) > div > div.registerTenlentStyle > div > div.container > div.formStyle > ' \
-                      f'form > div:nth-child(4) > div:nth-child(1) > div > ' \
-                      f'div > div > div > input").click()'
-        self.driver.execute_script(tenant_test)
 
+        perform_action(self.driver,496,312,True,True)
+        time.sleep(3)
+
+        # 租客姓名
         tenant_name = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
                       f'wujie-app").shadowRoot.querySelector("#app > div > ' \
                       f'div:nth-child(2) > div > div.registerTenlentStyle > div > div.container > div.formStyle > ' \
@@ -147,7 +145,8 @@ class registeredTenantCase(unittest.TestCase):
         self.driver.execute_script(identity_card_choose)
         self.logger.info("证件选择")
         # 证件号码 台胞证>8位
-        ActionChains(self.driver).move_by_offset(913, 393).click().perform()
+        #ActionChains(self.driver).move_by_offset(913, 393).click().perform()
+        perform_action(self.driver,913,393,True,True)
         identity_card = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
                         f'wujie-app").shadowRoot.querySelector("#app > div > ' \
                         f'div:nth-child(2) > div > div.registerTenlentStyle > div > div.container > div.formStyle > ' \
@@ -173,6 +172,7 @@ class registeredTenantCase(unittest.TestCase):
         self.logger.info("证件点击")
 
         # 业务人员
+        perform_action(self.driver,496,365,True,True)
         business_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
                          f'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
                          f'div.registerTenlentStyle > div > div.container > div.formStyle > form > div:nth-child(5) > ' \
@@ -241,6 +241,6 @@ class registeredTenantCase(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        time.sleep(3)
+        time.sleep(10)
         # 关闭浏览器对象
         cls.driver.quit()
