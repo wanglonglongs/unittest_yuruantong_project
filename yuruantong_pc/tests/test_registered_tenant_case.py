@@ -2,6 +2,7 @@
 import time
 import unittest
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -13,8 +14,6 @@ import string
 import datetime
 from nb_log import get_logger
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.common.action_chains import ActionChains
-
 
 
 class registeredTenantCase(unittest.TestCase):
@@ -147,8 +146,8 @@ class registeredTenantCase(unittest.TestCase):
                                 f'li:nth-child(3) > span").click()'
         self.driver.execute_script(identity_card_choose)
         self.logger.info("证件选择")
-
         # 证件号码 台胞证>8位
+        ActionChains(self.driver).move_by_offset(913, 393).click().perform()
         identity_card = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
                         f'wujie-app").shadowRoot.querySelector("#app > div > ' \
                         f'div:nth-child(2) > div > div.registerTenlentStyle > div > div.container > div.formStyle > ' \
@@ -157,8 +156,6 @@ class registeredTenantCase(unittest.TestCase):
         self.driver.execute_script(identity_card)
         self.logger.info("证件号码输入")
 
-        ActionChains(self.driver).move_by_offset(1175, 322).click().perform()
-        time.sleep(2)
         # 联系电话
         phone = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
                        f'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
