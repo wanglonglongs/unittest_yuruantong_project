@@ -51,102 +51,117 @@ class wholeManagementCase(unittest.TestCase):
         jump_housing_results = self.wait.until(EC.presence_of_element_located((By.XPATH,self.element["TAG_NAME_WHOLE_MANAGEMENT"]))).get_attribute('text')
         self.assertEqual("整租管理" in jump_housing_results, True)
         self.logger.info("打开整租管理页面成功")
+        # 重新进入整租页面中
+        self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
 
     @Screen(driver=driver)
     def test_pen_register_landlord(self):
-        time.sleep(2)
-        # 通过JS代码定位并点击元素 [点击登记房东]
-        register_landlord = self.element["REGISTER_LANDLORD_JS"]
-        self.driver.execute_script(register_landlord)
+        # 进入登记房东整租页面 点击登记房东按钮
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/button[1]/span'))).click()
 
-        # 校验是否已在登记[房东页面]
-        basic_information_js = self.element["FANG_DONG_PAGE_BASE"]
-        basic_information_result = self.driver.execute_script(basic_information_js)
-
-        # 文字判断是否出现 [基本信息]
-        self.assertEqual("基本信息" in basic_information_result, True)
-        self.logger.info("打开登录房东页面成功")
-
+    # 填写登记基本信息
     @Screen(driver=driver)
-    def test_register_landlord_information(self):
-        # 所属店面下拉展开
-        select_shopfront_option = self.element["FANG_DONG_SHOP_FRONT"]
-        self.driver.execute_script(select_shopfront_option)
-        time.sleep(2)
-        # 随机选取店面子级元素
+    def test_write_basic_information(self):
 
-        dian_mian_random = random.randint(1,10)
-        print(dian_mian_random)
-
-        # shopfront_value = self.element["FANG_DONG_SHOP_FRONT_NODES"]
-        shopfront_value = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
-                          f'wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > ' \
-                          f'div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li:nth-child(' \
-                          f'{dian_mian_random})").click()'
-
-        self.driver.execute_script(shopfront_value)
-
-        # 生成随机字母
-        def get_random_letter():
-            return chr(random.randint(65, 90))
-
-        # 座幢写入
-        input_block_number = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > div:nth-child(2) > div.el-col.el-col-24.el-col-lg-10.el-col-xl-6 > div > div > div > div:nth-child(1) > input").value = "{get_random_letter()}" '
-        self.driver.execute_script(input_block_number)
-
-        # 单元写入
-        input_unit_number = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > div:nth-child(2) > div.el-col.el-col-24.el-col-lg-10.el-col-xl-6 > div > div > div > div:nth-child(2) > input").value = "{dian_mian_random}" '
-        self.driver.execute_script(input_unit_number)
-
-        # 门牌号写入
-        input_house_number = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > div:nth-child(2) > div:nth-child(4) > div > div > div > div.el-input.el-input--small.el-input--suffix > input").value = "{dian_mian_random}" '
-        self.driver.execute_script(input_house_number)
-
+        # 所属店面选择
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[1]/div/div/div/div/div[1]/input'))).click()
+        # 店面下拉选择
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[2]/div[1]/div[1]/ul/li[1]/span'))).click()
+        # 座幢填写
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[3]/div/div/div/div[1]/input'))).send_keys("1")
+        # 单元填写
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[3]/div/div/div/div[2]/input'))).send_keys("1")
+        # 门牌号填写
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[4]/div/div/div/div/input'))).send_keys("1521")
         # 物业地址选择
-        select_property_address = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > div:nth-child(2) > div:nth-child(7) > div > div > div > div.el-select.el-select--small > div > input").value = "包河万达"'
-        self.driver.execute_script(select_property_address)
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[7]/div/div/div/div/div[1]/input'))).click()
+        # 物业地址下拉选择
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[14]/div[1]/div[1]/ul/li[2]'))).click()
+        time.sleep(2)
+        # 建筑面积填写
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[8]/div/div/div/div[1]/div/input'))).send_keys("1521")
+        # 房屋类型选择
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[9]/div/div/div/div[1]/input'))).click()
+        # 房屋类型下拉选择
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[14]/div[1]/div[1]/ul/li[1]'))).click()
+        # 装修程度选择
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[10]/div/div/div/div/div[1]/input'))).click()
+        # 装修程度下拉选择
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[10]/div/div/div/div/div[1]/input'))).click()
+        # 所在楼层填写
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[11]/div/div/div/div[1]/input'))).send_keys("1")
+        # 总楼层填写
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[11]/div/div/div/div[2]/input'))).send_keys("15")
+        # 朝向选择
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[12]/div/div/div/div/div[1]/input'))).click()
+        # 朝向下拉选择
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[6]/div[1]/div[1]/ul/li[1]'))).click()
 
-        property_address_value = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li.el-select-dropdown__item > span").click()'
-        self.driver.execute_script(property_address_value)
+    # # 填写登记房东信息
+    # @Screen(driver=driver)
+    # def test_write_landlord_information(self):
+    #     # 填写房东姓名
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[1]/div/div/div/div/input'))).send_keys("房东姓名")
+    #     # 选择证件类型
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[2]/div/div[1]/div[1]/input'))).click()
+    #     # 选择证件类型下拉选
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[7]/div[1]/div[1]/ul/li[4]'))).click()
+    #     # 证件号码填写
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[2]/div/div[2]/input'))).send_keys("H1234567894")
+    #     # 手机号码填写
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[3]/div/div/div/div/input'))).send_keys("15893281069")
+    #     # 收款人姓名
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[4]/div/div/div/div/input'))).send_keys("张三")
+    #     # 银行卡卡号填写
+    #     # 收款身份证填写
+    #     # 收款人手机号填写
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/formm/div[4]/div[4]/div/div/div/div/input'))).send_keys("15893281069")
+    #     # 渠道来源选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[9]/div/div/div/div/div[1]/input'))).click()
+    #     # 渠道来源下拉选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[8]/div[1]/div[1]/ul/li[1]'))).click()
+    #     # 房东包物业 选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[10]/div/div/div/div[1]/div[1]/input'))).click()
+    #     # 房东包物业下拉选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[9]/div[1]/div[1]/ul/li[2]'))).click()
+    #     # 房东包物业 金额填写
+    # # 填写托管房东信息
+    # @Screen(driver=driver)
+    # def test_write_trusteeship_information(self):
+    #     # 开始时间
+    #     # 合同期限按钮点击 3年
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[3]/div/div/div/span[1]'))).click()
+    #     # 缴费方式
+    #     # 收房价格填写
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[5]/div/div/div/input'))).send_keys("1500")
+    #     # 房屋押金点击押一
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[6]/div/div/div/span'))).click()
+    #     # 维修方案选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[7]/div/div/div/div/div[1]/input'))).click()
+    #     # 维修方案下拉选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[10]/div[1]/div[1]/ul/li[1]'))).click()
+    #     # 装修方案选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[8]/div/div/div/div/div[1]/div[1]/input'))).click()
+    #     # 装修方案下拉选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[11]/div[1]/div[1]/ul/li[1]'))).click()
+    #     # 首次付款日期选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[9]/div/div/div/div/input'))).click()
+    #     # 首次付款日期下拉选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[12]/div[1]/div/div[2]/table[1]/tbody/tr[2]/td[7]'))).click()
+    #     # 业务人员选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[10]/div/div/div/div/div[1]/input'))).click()
+    #     # 业务人员下拉选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[13]/div[1]/div[1]/ul/li[1]'))).click()
+    #     # 协助人员选择
+    #     # 累计免租期选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[12]/div/div/div/div/div/div[1]/div/div[1]/input'))).click()
+    #     # 累计免租期下拉选择
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[14]/div[1]/div[1]/ul/li[1]'))).click()
+    #     # 点击下一步
+    #     self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[3]/button[2]'))).click()
 
-        # 建筑面积
-        input_build_area = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
-                           'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > ' \
-                           'div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > div:nth-child(' \
-                           '2) > div:nth-child(8) > div > div > div > div.el-col.el-col-10 > div > input").value = ' \
-                           '"150" '
-        self.driver.execute_script(input_build_area)
 
-        # 房屋类型
-        select_house_type = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > div:nth-child(2) > div:nth-child(9) > div > div > div > div > input").value = "学区房"'
-        self.driver.execute_script(select_house_type)
 
-        # 装修程度
-        select_decoration_level = 'return document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > div:nth-child(2) > div:nth-child(10) > div > div > div > div.el-select.el-select--small > div > input").value = "简装"'
-        self.driver.execute_script(select_decoration_level)
-
-        # 楼层
-        input_place_storey = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div ' \
-                             '> wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > ' \
-                             'div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > ' \
-                             'div:nth-child(2) > div:nth-child(11) > div > div > div > div:nth-child(1) > ' \
-                             'input").value = "12" '
-        self.driver.execute_script(input_place_storey)
-        input_all_storey = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
-                           'wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > ' \
-                           'div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > div:nth-child(' \
-                           '2) > div:nth-child(11) > div > div > div > div:nth-child(3) > input").value = "25" '
-        self.driver.execute_script(input_all_storey)
-
-        # 朝向
-        select_open_direction = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > ' \
-                                'div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > ' \
-                                'div.registerTenlentStyle > div > div:nth-child(2) > div.formStyle > form > ' \
-                                'div:nth-child(2) > div:nth-child(12) > div > div > div > div > ' \
-                                'div.el-input.el-input--small.el-input--suffix > input").value = "东南"'
-        self.driver.execute_script(select_open_direction)
-
-        # 房东信息
 
     @classmethod
     def tearDownClass(cls):
