@@ -14,7 +14,7 @@ class Screen(object):
             except:
                 import time
                 nowTime = time.strftime("%Y_%m_%d_%H_%M_%S")
-                self.driver.get_screenshot_as_file('../result/images/%s.jpg' % nowTime)
+                self.driver.get_screenshot_as_file('../result/images/%s.png' % nowTime)
                 raise
 
         return inner
