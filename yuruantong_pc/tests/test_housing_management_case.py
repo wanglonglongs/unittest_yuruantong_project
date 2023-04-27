@@ -35,7 +35,7 @@ class wholeManagementCase(unittest.TestCase):
         login_page.login("18196627126","aaaa123456")
         # logger.info('登录成功')
 
-        self.logger.info("登录寓软通账号成功")
+        self.logger.info("登录寓软通账号成功 -success")
 
     @Screen(driver=driver)
     def test_2_case_openTag_page(self):
