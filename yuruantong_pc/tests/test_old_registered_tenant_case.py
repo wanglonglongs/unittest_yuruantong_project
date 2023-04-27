@@ -58,7 +58,7 @@ class registeredTenantCase(unittest.TestCase):
         self.assertEqual("整租管理" in jump_housing_results, True)
         self.logger.info("打开整租管理页面成功")
 
-        time.sleep(3)
+        time.sleep(5)
 
     # 租赁状态 未租选择
     @Screen(driver=driver)
@@ -118,7 +118,6 @@ class registeredTenantCase(unittest.TestCase):
 
         perform_action(self.driver,496,312,True,True)
         time.sleep(3)
-
         # 租客姓名
         tenant_name = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > ' \
                       f'wujie-app").shadowRoot.querySelector("#app > div > ' \
@@ -127,7 +126,7 @@ class registeredTenantCase(unittest.TestCase):
                       f'div > div > div > input").value = "{random_string_number(free_random_one_num(8,10))}" '
         self.driver.execute_script(tenant_name)
         self.logger.info("租客姓名")
-
+        time.sleep(2)
         # 证件选择（要先点开下拉框 再去选择）
         identity_card_input = f'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > ' \
                                f'div > wujie-app").shadowRoot.querySelector("#app > div > div:nth-child(2) > div > ' \
