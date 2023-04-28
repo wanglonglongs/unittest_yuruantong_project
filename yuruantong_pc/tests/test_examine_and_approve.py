@@ -25,7 +25,7 @@ class examineApproveCase(unittest.TestCase):
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
         cls.logger = LogManager('审批').get_logger_and_add_handlers(10,log_filename='审批.log')
         cls.common_utill = yu_ruan_common
-        cls.login_page.login = LoginPage.login()
+
     @Screen(driver=driver)
     def test_1_case_login_yuRuanTong(self):
         # 创建LoginPage对象

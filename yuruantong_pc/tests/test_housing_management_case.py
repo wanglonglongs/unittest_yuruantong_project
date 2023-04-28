@@ -33,7 +33,6 @@ class wholeManagementCase(unittest.TestCase):
 
         # 调用login()方法
         login_page.login("18196627126","aaaa123456")
-        # logger.info('登录成功')
 
         self.logger.info("登录寓软通账号成功 -success")
 
@@ -66,60 +65,42 @@ class wholeManagementCase(unittest.TestCase):
 
         # 所属店面选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[1]/div/div/div/div/div/input'))).click()
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[1]/div/div/div/div/div/input'))).send_keys("金中环")
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[2]/div[1]/div[1]/ul/li[1]'))).click()
-
+        time.sleep(1)
         # 店面下拉选择
-        # self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[14]/div[1]/div[1]/ul/li[1]'))).cllick()
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[2]/div[1]/div[1]/ul/li[1]'))).click()
         # 座幢填写
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[3]/div/div/div/div[1]/input'))).send_keys("1")
-
         # 单元填写
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[3]/div/div/div/div[2]/input'))).send_keys("1")
-        time.sleep(2)
         # 门牌号填写
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[4]/div/div/div/div/input'))).send_keys(self.common_utill.free_random_many_num(6))
-
         # 物业地址选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[7]/div/div/div/div/div[1]/input'))).click()
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[7]/div/div/div/div/div[1]/input'))).send_keys('包河万达')
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[3]/div[1]/div[1]/ul/li[1]'))).click()
-
+        time.sleep(1)
         # 物业地址下拉选择
-        # self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR,'body > div:nth-child(18) > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li:nth-child(1) > span'))).click()
-
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[3]/div[1]/div[1]/ul/li[1]'))).click()
         # 建筑面积填写
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[8]/div/div/div/div[1]/div/input'))).send_keys("1521")
-
         # 房屋类型选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[9]/div/div/div/div[1]/input'))).click()
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[9]/div/div/div/div[1]/input'))).send_keys("大三房")
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[4]/div[1]/div[1]/ul/li[1]'))).click()
-
+        time.sleep(1)
         # # 房屋类型下拉选择
-        # self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[14]/div[1]/div[1]/ul/li[1]'))).click()
-
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[4]/div[1]/div[1]/ul/li[1]'))).click()
         # # 装修程度选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[10]/div/div/div/div/div[1]/input'))).click()
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[10]/div/div/div/div/div[1]/input'))).send_keys("毛坯")
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[5]/div[1]/div[1]/ul/li[1]'))).click()
-
+        time.sleep(1)
         # # 装修程度下拉选择
-        # self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[10]/div/div/div/div/div[1]/input'))).click()
-
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[5]/div[1]/div[1]/ul/li[1]'))).click()
         # 所在楼层填写
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[11]/div/div/div/div[1]/input'))).send_keys("1")
-
         # 总楼层填写
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[11]/div/div/div/div[2]/input'))).send_keys("15")
-
         # 朝向选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[12]/div/div/div/div/div[1]/input'))).click()
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[12]/div/div/div/div/div[1]/input'))).send_keys("朝南")
+        time.sleep(1)
+        # # 朝向下拉选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[6]/div[1]/div[1]/ul/li[1]'))).click()
 
-        # # 朝向下拉选择
-        # self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[6]/div[1]/div[1]/ul/li[1]'))).click()
         self.logger.info("房东基本信息填写 -success")
 
     # # 填写登记房东信息
@@ -145,16 +126,14 @@ class wholeManagementCase(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[8]/div/div/div/div/input'))).send_keys(self.common_utill.random_create_phone())
         # 渠道来源选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[9]/div/div/div/div/div[1]/input'))).click()
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[9]/div/div/div/div/div[1]/input'))).send_keys("网上联系")
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[7]/div[1]/div[1]/ul/li[1]'))).click()
+        time.sleep(1)
         # 渠道来源下拉选择
-        # self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[8]/div[1]/div[1]/ul/li[1]'))).click()
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[7]/div[1]/div[1]/ul/li[1]'))).click()
         # 房东包物业 选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[10]/div/div/div/div[1]/div/input'))).click()
         time.sleep(1)
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[8]/div[1]/div[1]/ul/li[2]/span'))).click()
         # 房东包物业下拉选择
-        # self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[9]/div[1]/div[1]/ul/li[2]'))).click()
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[8]/div[1]/div[1]/ul/li[2]/span'))).click()
         # 房东包物业 金额填写
         # self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[10]/div/div/div/div[2]/input'))).send_keys("50")
         self.logger.info("房东信息填写成功 -success")
@@ -173,36 +152,33 @@ class wholeManagementCase(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[6]/div/div/div/span'))).click()
         # 维修方案选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[7]/div/div/div/div/div[1]/input'))).click()
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[7]/div/div/div/div/div[1]/input'))).send_keys("房东承担")
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[9]/div[1]/div[1]/ul/li[1]'))).click()
+        time.sleep(1)
         # 维修方案下拉选择
-        #self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[9]/div[1]/div[1]/ul/li[1]'))).click()
-
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[9]/div[1]/div[1]/ul/li[1]'))).click()
         # 装修方案选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[8]/div/div/div/div/div[1]/div[1]/input'))).click()
-        time.sleep(3)
+        time.sleep(1)
         # 装修方案下拉选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[10]/div[1]/div[1]/ul/li[1]'))).click()
         # 首次付款日期选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[9]/div/div/div/div/input'))).click()
-        time.sleep(2)
+        time.sleep(1)
         # 首次付款日期下拉选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[11]/div[1]/div/div[2]/table[1]/tbody/tr[6]/td[5]'))).click()
         # 业务人员选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[10]/div/div/div/div/div[1]/input'))).click()
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[10]/div/div/div/div/div[1]/input'))).send_keys()
-        time.sleep(3)
+        time.sleep(1)
         # 业务人员下拉选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[12]/div[1]/div[1]/ul/li[1]'))).click()
         # 协助人员选择
         # 累计免租期选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[12]/div/div/div/div/div/div[1]/div/div[1]/input'))).click()
-        time.sleep(3)
+        time.sleep(1)
         # 累计免租期下拉选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[13]/div[1]/div[1]/ul/li[1]/span'))).click()
         # 点击下一步
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[3]/button[2]'))).click()
-        time.sleep(3)
+        time.sleep(1)
         self.logger.info("托管信息填写成功 -success")
 
     # 填写物品管理页面
@@ -231,7 +207,7 @@ class wholeManagementCase(unittest.TestCase):
 
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[3]/button[2]'))).click()
 
-        time.sleep(5)
+        time.sleep(8)
         self.logger.info("登记房东初审成功-success")
 
     @classmethod
