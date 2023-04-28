@@ -234,7 +234,6 @@ class wholeManagementCase(unittest.TestCase):
         time.sleep(5)
         self.logger.info("登记房东初审成功-success")
 
-
     @classmethod
     def tearDownClass(cls):
         # 关闭浏览器对象
