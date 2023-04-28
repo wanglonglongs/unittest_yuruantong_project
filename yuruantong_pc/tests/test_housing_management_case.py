@@ -20,7 +20,7 @@ class wholeManagementCase(unittest.TestCase):
     def setUpClass(cls):
         # 创建Chrome浏览器对象
         cls.driver.maximize_window()
-        cls.element_locator_yaml = '../configs/element_locator/fang_dong_login.yaml '
+        cls.element_locator_yaml = r'../configs/element_locator/fang_dong_login.yaml '
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
         cls.logger = LogManager('登记房东').get_logger_and_add_handlers(10,log_filename='登记房东.log')
@@ -233,6 +233,8 @@ class wholeManagementCase(unittest.TestCase):
 
         time.sleep(5)
         self.logger.info("登记房东初审成功-success")
+
+
     @classmethod
     def tearDownClass(cls):
         # 关闭浏览器对象
