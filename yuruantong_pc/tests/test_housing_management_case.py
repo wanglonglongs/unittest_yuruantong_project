@@ -27,7 +27,7 @@ class wholeManagementCase(unittest.TestCase):
         cls.common_utill = yu_ruan_common
 
     @Screen(driver=driver)
-    def test_1_case_login_yuRuanTong(self):
+    def test_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
 
@@ -37,7 +37,7 @@ class wholeManagementCase(unittest.TestCase):
         self.logger.info("登录寓软通账号成功 -success")
 
     @Screen(driver=driver)
-    def test_2_case_openTag_page(self):
+    def test_openTag_page(self):
         # 点击菜单选项栏-房源
         self.wait.until(EC.presence_of_element_located(
             (By.XPATH, self.element["MENU_HOUSING_RESOURCES"]))).click()
@@ -55,13 +55,13 @@ class wholeManagementCase(unittest.TestCase):
         self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
 
     @Screen(driver=driver)
-    def test_3_case_pen_register_landlord(self):
+    def test_pen_register_landlord(self):
         # 进入登记房东整租页面 点击登记房东按钮
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/button[1]/span'))).click()
         self.logger.info("进入登记房东页面成功 -success")
     # 填写登记基本信息
     @Screen(driver=driver)
-    def test_4_case_write_basic_information(self):
+    def test_write_basic_information(self):
 
         # 所属店面选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[1]/div/div/div/div/div/input'))).click()
@@ -105,7 +105,7 @@ class wholeManagementCase(unittest.TestCase):
 
     # # 填写登记房东信息
     @Screen(driver=driver)
-    def test_5_case_write_landlord_information(self):
+    def test_write_landlord_information(self):
         # 填写房东姓名
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[1]/div/div/div/div/input'))).send_keys("房东姓名")
         # 选择证件类型
@@ -140,7 +140,7 @@ class wholeManagementCase(unittest.TestCase):
 
     # 填写托管房东信息
     @Screen(driver=driver)
-    def test_6_case_write_trusteeship_information(self):
+    def test_write_trusteeship_information(self):
         # 开始时间
         # 结束时间
         # 合同期限按钮点击 3年
@@ -183,7 +183,7 @@ class wholeManagementCase(unittest.TestCase):
 
     # 填写物品管理页面
     @Screen(driver=driver)
-    def test_7_case_write_Item_information(self):
+    def test_write_Item_information(self):
 
         # 删除物品按钮点击
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[3]/table/tbody/tr/td[7]/div/i'))).click()
@@ -193,14 +193,14 @@ class wholeManagementCase(unittest.TestCase):
 
     # 账单明细页面
     @Screen(driver=driver)
-    def test_8_case_Read_bills_information(self):
+    def test_Read_bills_information(self):
         # 点击下一步按钮
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[4]/div[3]/button[2]'))).click()
         self.logger.info("账单信息页面 -success")
 
     # 上传合同信息 并提交初审
     @Screen(driver=driver)
-    def test_9_case_upload_contract_information(self):
+    def test_upload_contract_information(self):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[1]/div/div[1]/div/input'))).send_keys("C:/Users/admin\Desktop\image/tu-01.png")
 
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[2]/div/div[1]/div/input'))).send_keys("C:/Users/admin\Desktop\image/tu-01.png")

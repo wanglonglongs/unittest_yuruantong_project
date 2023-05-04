@@ -18,20 +18,20 @@ print(report_path)
 def all_case():
     # 房东登记
     suite = unittest.TestSuite()
-    suite.addTest(wholeManagementCase("test_1_case_login_yuRuanTong"))
-    suite.addTest(wholeManagementCase("test_2_case_openTag_page"))
-    suite.addTest(wholeManagementCase("test_3_case_pen_register_landlord"))
-    suite.addTest(wholeManagementCase("test_4_case_write_basic_information"))
-    suite.addTest(wholeManagementCase("test_5_case_write_landlord_information"))
-    suite.addTest(wholeManagementCase("test_6_case_write_trusteeship_information"))
-    suite.addTest(wholeManagementCase("test_7_case_write_Item_information"))
-    suite.addTest(wholeManagementCase("test_8_case_Read_bills_information"))
-    suite.addTest(wholeManagementCase("test_9_case_upload_contract_information"))
+    suite.addTest(wholeManagementCase("test_login_yuRuanTong"))
+    suite.addTest(wholeManagementCase("test_openTag_page"))
+    suite.addTest(wholeManagementCase("test_pen_register_landlord"))
+    suite.addTest(wholeManagementCase("test_write_basic_information"))
+    suite.addTest(wholeManagementCase("test_write_landlord_information"))
+    suite.addTest(wholeManagementCase("test_write_trusteeship_information"))
+    suite.addTest(wholeManagementCase("test_write_Item_information"))
+    suite.addTest(wholeManagementCase("test_Read_bills_information"))
+    suite.addTest(wholeManagementCase("test_upload_contract_information"))
 
     # 房东审批
-    suite.addTest(examineApproveCase("test_1_case_login_yuRuanTong"))
-    suite.addTest(examineApproveCase("test_2_case_jump_examine_page"))
-    suite.addTest(examineApproveCase("test_3_case_click_careful_button"))
+    suite.addTest(examineApproveCase("test_login_yuRuanTong"))
+    suite.addTest(examineApproveCase("test_jump_examine_page"))
+    suite.addTest(examineApproveCase("test_click_careful_button"))
 
     # 租客登记
     suite.addTest(checkInTenant("test_login_yuRuanTong"))
