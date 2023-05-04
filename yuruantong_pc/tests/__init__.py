@@ -3,8 +3,10 @@ import unittest
 import os
 import time
 import HTMLTestRunnerNew
+
+from yuruantong_pc.tests.test_approve_check_tenant import approveCheckTenant
 from yuruantong_pc.tests.test_housing_management_case import wholeManagementCase
-from yuruantong_pc.tests.test_check_in_tenant_case import checkInTenant
+from yuruantong_pc.tests.test_check_tenant_case import checkInTenant
 from yuruantong_pc.tests.test_examine_and_approve import examineApproveCase
 
 # 用例路径
@@ -34,9 +36,16 @@ def all_case():
     suite.addTest(examineApproveCase("test_click_careful_button"))
 
     # 租客登记
-    suite.addTest(checkInTenant("test_login_yuRuanTong"))
-    suite.addTest(checkInTenant("test_openTag_page"))
-    suite.addTest(checkInTenant("test_zuLinStatus"))
+    suite.addTest(checkInTenant("test_register_tenant_login_yuRuanTong"))
+    suite.addTest(checkInTenant("test_register_tenant_openTag_page"))
+    suite.addTest(checkInTenant("test_register_tenant_detail"))
+
+    # 租客审批
+    suite.addTest(approveCheckTenant("test_approve_tenant_login_yuRuanTong"))
+    suite.addTest(approveCheckTenant("test_approve_tenant_openTag_page"))
+    suite.addTest(approveCheckTenant("test_approve_tenant_detail"))
+
+
     print(suite)
     return (suite)
 

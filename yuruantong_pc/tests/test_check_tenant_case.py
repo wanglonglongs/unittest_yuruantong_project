@@ -32,16 +32,16 @@ class checkInTenant(unittest.TestCase):
         cls.logger = get_logger('登记租客')
 
     @Screen(driver=driver)
-    def test_login_yuRuanTong(self):
+    def test_register_tenant_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
 
         # 调用login()方法
         login_page.login("18196627126", "aaaa123456")
-        self.logger.info("登记租客成功")
+        self.logger.info("登记租客-登录")
 
     @Screen(driver=driver)
-    def test_openTag_page(self):
+    def test_register_tenant_openTag_page(self):
         # 点击菜单选项栏-房源
         self.wait.until(EC.presence_of_element_located(
             (By.XPATH, self.element["MENU_HOUSING_RESOURCES"]))).click()
@@ -62,8 +62,7 @@ class checkInTenant(unittest.TestCase):
 
     # 租赁状态未租选择
     @Screen(driver=driver)
-    def test_zuLinStatus(self):
-        print("1111111111111111111")
+    def test_register_tenant_detail(self):
         # 租赁状态下拉
         lease_status = f'document.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(2) > div > div > div > input").click()'
         self.driver.execute_script(lease_status)
@@ -134,9 +133,9 @@ class checkInTenant(unittest.TestCase):
         price = yu_ruan_common.free_random_many_num(4)
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[2]/div/div/div/div[1]/div/input'))).send_keys(price)
 
+        time.sleep(1)
         # 房屋押金
-        deposit = "".join(map(lambda x: random.choice(string.digits), range(4)))
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[3]/div/div/div/div[1]/div/input'))).send_keys(deposit)
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[3]/div/div/div/div[2]/div/span'))).click()
 
         # 提前缴费
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[4]/div/div/div/div[2]/div/span[1]'))).click()
@@ -155,16 +154,16 @@ class checkInTenant(unittest.TestCase):
         time.sleep(2)
 
         # 身份证照片
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[2]/div[2]/div/div/div/div/div[1]/div/input'))).send_keys(fr"F:\py_project\py_project\yuruantong_pc\result\images\project_images/{yu_ruan_common.free_random_one_num(1,4)}.jpg")
+        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[2]/div[2]/div/div/div/div/div[1]/div/input'))).send_keys(fr"F:\photo\{yu_ruan_common.free_random_one_num(1,4)}.jpg")
 
         # 合同上传
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[2]/div[4]/div/div/div/div/div[1]/div/input'))).send_keys(fr"F:\py_project\py_project\yuruantong_pc\result\images\project_images/{yu_ruan_common.free_random_one_num(1,4)}.jpg")
+        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[2]/div[4]/div/div/div/div/div[1]/div/input'))).send_keys(fr"F:\photo\{yu_ruan_common.free_random_one_num(1,4)}.jpg")
 
         # 交割单照片
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[2]/div[6]/div/div/div/div/div[1]/div/input'))).send_keys(fr"F:\py_project\py_project\yuruantong_pc\result\images\project_images/{yu_ruan_common.free_random_one_num(1,4)}.jpg")
+        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[2]/div[6]/div/div/div/div/div[1]/div/input'))).send_keys(fr"F:\photo\{yu_ruan_common.free_random_one_num(1,4)}.jpg")
 
         # 其他
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[2]/div[8]/div/div/div/div/div[1]/div/input'))).send_keys(fr"F:\py_project\py_project\yuruantong_pc\result\images\project_images/{yu_ruan_common.free_random_one_num(1,4)}.jpg")
+        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[2]/div[8]/div/div/div/div/div[1]/div/input'))).send_keys(fr"F:\photo\{yu_ruan_common.free_random_one_num(1,4)}.jpg")
         time.sleep(1)
 
         # 提交初审
@@ -173,7 +172,7 @@ class checkInTenant(unittest.TestCase):
         # # 提交复审
         # self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[3]/button[3]'))).click()
 
-
+        self.logger.info("登记租客成功")
 
     @classmethod
     def tearDownClass(cls):
