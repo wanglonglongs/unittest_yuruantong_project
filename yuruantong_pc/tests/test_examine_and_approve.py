@@ -43,6 +43,7 @@ class examineApproveCase(unittest.TestCase):
         self.driver.get("http://test.yuruantong.com/amp/approval/")
         self.logger.info("跳转房东审批页面成功 -success")
 
+
     # 房东审批
     @Screen(driver=driver)
     def test_3_case_click_(self):
@@ -59,6 +60,9 @@ class examineApproveCase(unittest.TestCase):
         reexamine = 'document.querySelector("#app > div > div > div > div:nth-child(2) > div > div:nth-child(2) > div > div > div > div.el-table__inner-wrapper > div.el-table__body-wrapper > div > div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default > div > table > tbody > tr:nth-child(1) > td.el-table_1_column_19.is-center.el-table-fixed-column--right.el-table__cell > div > div > div").click()'
         self.driver.execute_script(reexamine)
         time.sleep(3)
+        self.logger.info("房东审批成功 -success")
+
+
 
     @classmethod
     def tearDownClass(cls):
