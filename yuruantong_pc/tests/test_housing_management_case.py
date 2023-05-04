@@ -69,9 +69,9 @@ class wholeManagementCase(unittest.TestCase):
         # 店面下拉选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[2]/div[1]/div[1]/ul/li[1]'))).click()
         # 座幢填写
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[3]/div/div/div/div[1]/input'))).send_keys("1")
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[3]/div/div/div/div[1]/input'))).send_keys(self.common_utill.random_string_generator(1))
         # 单元填写
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[3]/div/div/div/div[2]/input'))).send_keys("1")
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[3]/div/div/div/div[2]/input'))).send_keys(self.common_utill.random_string_number(1))
         # 门牌号填写
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[4]/div/div/div/div/input'))).send_keys(self.common_utill.free_random_many_num(6))
         # 物业地址选择
@@ -80,7 +80,7 @@ class wholeManagementCase(unittest.TestCase):
         # 物业地址下拉选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[3]/div[1]/div[1]/ul/li[1]'))).click()
         # 建筑面积填写
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[8]/div/div/div/div[1]/div/input'))).send_keys("1521")
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[8]/div/div/div/div[1]/div/input'))).send_keys(self.common_utill.random_string_number(3))
         # 房屋类型选择
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[9]/div/div/div/div[1]/input'))).click()
         time.sleep(1)
@@ -107,7 +107,7 @@ class wholeManagementCase(unittest.TestCase):
     @Screen(driver=driver)
     def test_write_landlord_information(self):
         # 填写房东姓名
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[1]/div/div/div/div/input'))).send_keys("房东姓名")
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[1]/div/div/div/div/input'))).send_keys(self.common_utill.random_string_generator(3))
         # 选择证件类型
         # self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[2]/div/div[1]/div[1]/input'))).click()
         # 选择证件类型下拉选
@@ -117,7 +117,7 @@ class wholeManagementCase(unittest.TestCase):
         # 手机号码填写
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[3]/div/div/div/div/input'))).send_keys(self.common_utill.random_create_phone())
         # 收款人姓名
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[4]/div/div/div/div/input'))).send_keys("张三")
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[4]/div/div/div/div/input'))).send_keys(self.common_utill.random_string_generator(3))
         # 银行卡卡号填写
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[6]/div/div/div/div/input'))).send_keys("6214835400894513")
         # 收款身份证填写
