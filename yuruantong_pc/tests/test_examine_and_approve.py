@@ -43,11 +43,10 @@ class examineApproveCase(unittest.TestCase):
         self.driver.get("http://test.yuruantong.com/amp/approval/")
         self.logger.info("跳转房东审批页面成功 -success")
 
-
     # 房东审批
     @Screen(driver=driver)
     def test_click_careful_button(self):
-        # 第一个审批 初审
+        # 初审
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[17]/div/div'))).click()
         time.sleep(3)
 
@@ -56,18 +55,16 @@ class examineApproveCase(unittest.TestCase):
         self.driver.execute_script(preliminary_examination)
         time.sleep(3)
 
-        # 弹框 alert 登记房东复审
+        # 复审
         reexamine = 'document.querySelector("#app > div > div > div > div:nth-child(2) > div > div:nth-child(2) > div > div > div > div.el-table__inner-wrapper > div.el-table__body-wrapper > div > div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default > div > table > tbody > tr:nth-child(1) > td.el-table_1_column_19.is-center.el-table-fixed-column--right.el-table__cell > div > div > div").click()'
         self.driver.execute_script(reexamine)
         time.sleep(3)
 
-        # 点击复审按钮
+        # 弹框 alert 登记房东复审
         reexamine1 = 'document.querySelector("body > div:nth-child(6) > div > div > div.el-dialog__body > div > div:nth-child(2) > button.el-button.el-button--small.external-btn-size.green-color.font-color").click()'
         self.driver.execute_script(reexamine1)
 
         self.logger.info("房东审批成功 -success")
-
-
 
     @classmethod
     def tearDownClass(cls):
