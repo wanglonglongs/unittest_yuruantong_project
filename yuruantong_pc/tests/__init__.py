@@ -3,14 +3,12 @@ import unittest
 import os
 import time
 import HTMLTestRunnerNew
-
 from yuruantong_pc.tests.test_approve_check_tenant import approveCheckTenant
 from yuruantong_pc.tests.test_housing_management_case import wholeManagementCase
 from yuruantong_pc.tests.test_check_tenant_case import checkInTenant
 from yuruantong_pc.tests.test_examine_and_approve import examineApproveCase
-
+from yuruantong_pc.tests.test_landl_exit_case import landlordCheckOutCase
 # 用例路径
-case_path = os.path.join(os.path.dirname(__file__),"tests")
 # 报告存放路径
 os.chdir('../result')
 report_path = os.path.join(os.getcwd(), 'report')
@@ -45,9 +43,19 @@ def all_case():
     suite.addTest(approveCheckTenant("test_approve_tenant_openTag_page"))
     suite.addTest(approveCheckTenant("test_approve_tenant_detail"))
 
+    # 房东退房
+    suite.addTest(landlordCheckOutCase("test_1_login_yuRuanTong"))
+    suite.addTest(landlordCheckOutCase("test_2_jump_whole_page"))
+    suite.addTest(landlordCheckOutCase("test_3_click_landlord_button"))
+    suite.addTest(landlordCheckOutCase("test_4_click_landlord_button"))
+    suite.addTest(landlordCheckOutCase("test_5_click_landlord_button"))
+    suite.addTest(landlordCheckOutCase("test_6_click_landlord_button"))
+    suite.addTest(landlordCheckOutCase("test_7_click_landlord_button"))
+    suite.addTest(landlordCheckOutCase("test_8_click_landlord_button"))
+    suite.addTest(landlordCheckOutCase("test_9_click_landlord_button"))
 
     print(suite)
-    return (suite)
+    return(suite)
 
 
 if __name__ == '__main__':
