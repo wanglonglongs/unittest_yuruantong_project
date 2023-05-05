@@ -10,6 +10,7 @@ from yuruantong_pc.tests.test_check_tenant_case import checkInTenant
 from yuruantong_pc.tests.test_examine_and_approve import examineApproveCase
 from yuruantong_pc.tests.test_landl_exit_case import landlordCheckOutCase
 from yuruantong_pc.tests.test_refund_tenant_case import refundTenant
+from yuruantong_pc.tests.test_out_approve_landl import outApproverLandl
 
 # 用例路径
 # 报告存放路径
@@ -73,6 +74,9 @@ def all_case():
     suite.addTest(landlordCheckOutCase("test_8_click_landlord_button"))
     suite.addTest(landlordCheckOutCase("test_9_click_landlord_button"))
 
+    suite.addTest(outApproverLandl("test_1_login_yuRuanTong"))
+    suite.addTest(outApproverLandl("test_2_jump_examine_page"))
+    suite.addTest(outApproverLandl("test_3_click_careful_button"))
 
 
     print(suite)
