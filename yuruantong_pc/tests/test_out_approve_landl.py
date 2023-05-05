@@ -74,7 +74,7 @@ class outApproverLandl(unittest.TestCase):
         reexamine3 = 'document.querySelector("body > div:nth-child(6) > div > div > div.el-dialog__body > div > div:nth-child(2) > button.el-button.el-button--small.external-btn-size.green-color.font-color").click()'
         self.driver.execute_script(reexamine3)
 
-        self.logger.info("房东审批成功 -success")
+        self.logger.info("房东退审 -success")
 
     @classmethod
     def tearDownClass(cls):
