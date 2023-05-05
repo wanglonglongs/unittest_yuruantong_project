@@ -11,7 +11,7 @@ import random
 from yuruantong_pc.common.error_screenshot import Screen
 import string
 import datetime
-from nb_log import get_logger
+from nb_log import get_logger, LogManager
 from selenium.webdriver.support.ui import Select
 from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
@@ -29,7 +29,7 @@ class checkInTenant(unittest.TestCase):
         cls.element_locator_whole_yaml = '../configs/element_locator/whole_rent_path_enum.yaml'
         cls.element_whole = YamlHelper.read_yaml(cls.element_locator_whole_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
-        cls.logger = get_logger('登记租客')
+        cls.logger = LogManager('登记租客').get_logger_and_add_handlers(10,log_filename='登记租客.log')
 
     @Screen(driver=driver)
     def test_register_tenant_login_yuRuanTong(self):

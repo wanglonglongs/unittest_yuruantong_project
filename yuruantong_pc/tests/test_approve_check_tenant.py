@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from yuruantong_pc.common.yaml_helper import YamlHelper
 from yuruantong_pc.common.packaging_methon.yu_ruan_login import LoginPage
 from yuruantong_pc.common.error_screenshot import Screen
-from nb_log import get_logger
+from nb_log import get_logger, LogManager
 
 
 class approveCheckTenant(unittest.TestCase):
@@ -23,7 +23,7 @@ class approveCheckTenant(unittest.TestCase):
         cls.element_locator_whole_yaml = '../configs/element_locator/whole_rent_path_enum.yaml'
         cls.element_whole = YamlHelper.read_yaml(cls.element_locator_whole_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
-        cls.logger = get_logger('登记租客审批')
+        cls.logger = LogManager('登记租客审批').get_logger_and_add_handlers(10, log_filename='登记租客审批.log')
 
     @Screen(driver=driver)
     def test_approve_tenant_login_yuRuanTong(self):
@@ -45,27 +45,21 @@ class approveCheckTenant(unittest.TestCase):
     def test_approve_tenant_detail(self):
         # 点击初审
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[16]/div/div/div'))).click()
-        time.sleep(2)
 
         # 点击初审弹框 通过
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[4]/div/div/div[2]/div/div[2]/button[2]'))).click()
-        time.sleep(3)
 
         # # 点击初审弹框 驳回
         # self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[4]/div/div/div[2]/div/div[2]/button[1]'))).click()
-        # time.sleep(3)
 
         # 点击复审
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[18]/div/div/div'))).click()
-        time.sleep(2)
 
         # 点击复审弹框 通过
         self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div/div/div[2]/div/div[2]/button[2]'))).click()
-        time.sleep(3)
 
         # # 点击复审弹框 驳回
         # self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div/div/div[2]/div/div[2]/button[1]'))).click()
-        # time.sleep(3)
         self.logger.info("登记租客审批成功")
 
     @classmethod

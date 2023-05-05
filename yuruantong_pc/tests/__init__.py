@@ -8,6 +8,8 @@ from yuruantong_pc.tests.test_housing_management_case import wholeManagementCase
 from yuruantong_pc.tests.test_check_tenant_case import checkInTenant
 from yuruantong_pc.tests.test_examine_and_approve import examineApproveCase
 from yuruantong_pc.tests.test_landl_exit_case import landlordCheckOutCase
+from yuruantong_pc.tests.test_refund_tenant_case import refundTenant
+
 # 用例路径
 # 报告存放路径
 os.chdir('../result')
@@ -43,6 +45,17 @@ def all_case():
     suite.addTest(approveCheckTenant("test_approve_tenant_openTag_page"))
     suite.addTest(approveCheckTenant("test_approve_tenant_detail"))
 
+    # 租客退房
+    suite.addTest(refundTenant("test_1_refund_tenant_login_yuRuanTong"))
+    suite.addTest(refundTenant("test_2_refund_tenant_openTag_page"))
+    suite.addTest(refundTenant("test_3_lease_status_choose"))
+    suite.addTest(refundTenant("test_4_enter_refund_tenant"))
+    suite.addTest(refundTenant("test_5_enter_refund_tenant"))
+    suite.addTest(refundTenant("test_6_energy_charges_deducted"))
+    suite.addTest(refundTenant("test_7_other_fees_deducted"))
+    suite.addTest(refundTenant("test_8_check_out_photo"))
+    suite.addTest(refundTenant("test_9_check_out_photo"))
+
     # 房东退房
     suite.addTest(landlordCheckOutCase("test_1_login_yuRuanTong"))
     suite.addTest(landlordCheckOutCase("test_2_jump_whole_page"))
@@ -54,8 +67,12 @@ def all_case():
     suite.addTest(landlordCheckOutCase("test_8_click_landlord_button"))
     suite.addTest(landlordCheckOutCase("test_9_click_landlord_button"))
 
+
+
     print(suite)
     return(suite)
+
+    # 
 
 
 if __name__ == '__main__':
