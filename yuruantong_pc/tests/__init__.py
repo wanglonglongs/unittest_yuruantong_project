@@ -4,6 +4,7 @@ import os
 import time
 import HTMLTestRunnerNew
 from yuruantong_pc.tests.test_approve_check_tenant import approveCheckTenant
+from yuruantong_pc.tests.test_approve_refund_tenant_case import approveRefundTenant
 from yuruantong_pc.tests.test_housing_management_case import wholeManagementCase
 from yuruantong_pc.tests.test_check_tenant_case import checkInTenant
 from yuruantong_pc.tests.test_examine_and_approve import examineApproveCase
@@ -30,7 +31,7 @@ def all_case():
     suite.addTest(wholeManagementCase("test_Read_bills_information"))
     suite.addTest(wholeManagementCase("test_upload_contract_information"))
 
-    # 房东审批
+    # 房东登记审批
     suite.addTest(examineApproveCase("test_login_yuRuanTong"))
     suite.addTest(examineApproveCase("test_jump_examine_page"))
     suite.addTest(examineApproveCase("test_click_careful_button"))
@@ -40,21 +41,26 @@ def all_case():
     suite.addTest(checkInTenant("test_register_tenant_openTag_page"))
     suite.addTest(checkInTenant("test_register_tenant_detail"))
 
-    # 租客审批
+    # 租客登记审批
     suite.addTest(approveCheckTenant("test_approve_tenant_login_yuRuanTong"))
     suite.addTest(approveCheckTenant("test_approve_tenant_openTag_page"))
     suite.addTest(approveCheckTenant("test_approve_tenant_detail"))
 
     # 租客退房
-    suite.addTest(refundTenant("test_1_refund_tenant_login_yuRuanTong"))
-    suite.addTest(refundTenant("test_2_refund_tenant_openTag_page"))
-    suite.addTest(refundTenant("test_3_lease_status_choose"))
-    suite.addTest(refundTenant("test_4_enter_refund_tenant"))
-    suite.addTest(refundTenant("test_5_enter_refund_tenant"))
-    suite.addTest(refundTenant("test_6_energy_charges_deducted"))
-    suite.addTest(refundTenant("test_7_other_fees_deducted"))
-    suite.addTest(refundTenant("test_8_check_out_photo"))
-    suite.addTest(refundTenant("test_9_check_out_photo"))
+    suite.addTest(refundTenant("test_refund_tenant_login_yuRuanTong"))
+    suite.addTest(refundTenant("test_refund_tenant_openTag_page"))
+    suite.addTest(refundTenant("test_lease_status_choose"))
+    suite.addTest(refundTenant("test_enter_refund_tenant"))
+    suite.addTest(refundTenant("test_operation_refund_tenant"))
+    suite.addTest(refundTenant("test_energy_charges_deducted"))
+    suite.addTest(refundTenant("test_other_fees_deducted"))
+    suite.addTest(refundTenant("test_check_out_photo"))
+    suite.addTest(refundTenant("test_refund_tenant_confirm"))
+
+    # 租客退房审批
+    suite.addTest(approveRefundTenant("test_approve_refund_tenant_login"))
+    suite.addTest(approveRefundTenant("test_approve_refund_tenant_openTag_page"))
+    suite.addTest(approveRefundTenant("test_approve_refund_tenant_detail"))
 
     # 房东退房
     suite.addTest(landlordCheckOutCase("test_1_login_yuRuanTong"))

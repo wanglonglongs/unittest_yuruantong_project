@@ -51,6 +51,7 @@ class approveCheckTenant(unittest.TestCase):
 
         # # 点击初审弹框 驳回
         # self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[4]/div/div/div[2]/div/div[2]/button[1]'))).click()
+        time.sleep(5)
 
         # 点击复审
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[18]/div/div/div'))).click()

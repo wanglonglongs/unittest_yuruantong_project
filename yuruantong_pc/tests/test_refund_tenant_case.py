@@ -32,22 +32,22 @@ class refundTenant(unittest.TestCase):
         cls.logger = LogManager('租客退房').get_logger_and_add_handlers(10,log_filename='租客退房.log')
 
     @Screen(driver=driver)
-    def test_1_refund_tenant_login_yuRuanTong(self):
+    def test_refund_tenant_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
 
         # 调用login()方法
         login_page.login("18196627126", "aaaa123456")
-        self.logger.info("租客退房-登录")
+        self.logger.info("租客退房-登录-success")
         time.sleep(2)
     @Screen(driver=driver)
-    def test_2_refund_tenant_openTag_page(self):
+    def test_refund_tenant_openTag_page(self):
         # 重新进入整租页面中
         self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
 
     # 租赁状态已租选择
     @Screen(driver=driver)
-    def test_3_lease_status_choose(self):
+    def test_lease_status_choose(self):
         # 租赁状态下拉
         lease_status = f'document.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(2) > div > div > div > input").click()'
         self.driver.execute_script(lease_status)
@@ -60,21 +60,21 @@ class refundTenant(unittest.TestCase):
         search = f'document.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(5) > button.el-button.el-button--danger.el-button--mini").click()'
         self.driver.execute_script(search)
         time.sleep(2)
-        self.logger.info("筛选已租状态完成")
+        self.logger.info("筛选已租状态完成-success")
 
     # 点击租客退房
     @Screen(driver=driver)
-    def test_4_enter_refund_tenant(self):
+    def test_enter_refund_tenant(self):
         # 点击操作按钮
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/section/main/div[1]/div/div/div/div[4]/div[2]/table/tbody/tr[1]/td[24]/div/div[2]/button/span/div/button'))).click()
 
         # 点击租客退房
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/ul/div[1]/div[4]/div/span[2]'))).click()
-        self.logger.info("进入租客退房界面")
+        self.logger.info("进入租客退房界面-success")
 
     # 进入租客退房操作界面,信息填写 (应退还给租客)
     @Screen(driver=driver)
-    def test_5_enter_refund_tenant(self):
+    def test_operation_refund_tenant(self):
         # 退还押金
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[6]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
 
@@ -105,7 +105,7 @@ class refundTenant(unittest.TestCase):
 
     # 应扣能源费
     @Screen(driver=driver)
-    def test_6_energy_charges_deducted(self):
+    def test_energy_charges_deducted(self):
         # 水费-上次底数
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[8]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(1))
 
@@ -144,7 +144,7 @@ class refundTenant(unittest.TestCase):
 
     # 应扣其他费
     @Screen(driver=driver)
-    def test_7_other_fees_deducted(self):
+    def test_other_fees_deducted(self):
         # 违约金
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[13]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
 
@@ -168,7 +168,7 @@ class refundTenant(unittest.TestCase):
 
     # 退房照片 + 备注信息
     @Screen(driver=driver)
-    def test_8_check_out_photo(self):
+    def test_check_out_photo(self):
         # 身份证照片
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[18]/div/div/div/div/div[1]/div/input'))).send_keys(fr"F:\photo\{yu_ruan_common.free_random_one_num(1, 4)}.jpg")
 
@@ -178,13 +178,14 @@ class refundTenant(unittest.TestCase):
 
     # 租客退房确认 取消
     @Screen(driver=driver)
-    def test_9_check_out_photo(self):
-        time.sleep(3)
+    def test_refund_tenant_confirm(self):
+        time.sleep(2)
         # 确认
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[3]/button[2]'))).click()
-
+        time.sleep(2)
         # # 取消
         # self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/section/main/div[1]/div/div/div/div[4]/div[2]/table/tbody/tr[1]/td[24]/div/div[2]/button/span/div/button'))).click()
+        self.logger.info("租客退房审批成功-success")
     @classmethod
     def tearDownClass(cls):
         time.sleep(10)

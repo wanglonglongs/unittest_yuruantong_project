@@ -38,7 +38,7 @@ class checkInTenant(unittest.TestCase):
 
         # 调用login()方法
         login_page.login("18196627126", "aaaa123456")
-        self.logger.info("登记租客-登录")
+        self.logger.info("登记租客-登录-success")
 
     @Screen(driver=driver)
     def test_register_tenant_openTag_page(self):
@@ -55,7 +55,7 @@ class checkInTenant(unittest.TestCase):
         jump_housing_results = self.wait.until(
             EC.presence_of_element_located((By.XPATH, self.element["TAG_NAME_WHOLE_MANAGEMENT"]))).get_attribute('text')
         self.assertEqual("整租管理" in jump_housing_results, True)
-        self.logger.info("打开整租管理页面成功")
+        self.logger.info("打开整租管理页面成功-success")
 
         # 重新进入整租页面中
         self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
@@ -172,7 +172,7 @@ class checkInTenant(unittest.TestCase):
         # # 提交复审
         # self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[3]/button[3]'))).click()
 
-        self.logger.info("登记租客成功")
+        self.logger.info("登记租客成功-success")
 
     @classmethod
     def tearDownClass(cls):
