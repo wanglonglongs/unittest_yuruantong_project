@@ -47,7 +47,7 @@ class examineApproveCase(unittest.TestCase):
     @Screen(driver=driver)
     def test_click_careful_button(self):
         # 初审
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[17]/div/div'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[17]/div/div'))).click()
         time.sleep(3)
 
         # 弹框 alert 登记房东审批

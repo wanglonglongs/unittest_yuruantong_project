@@ -47,11 +47,11 @@ class landlordCheckOutCase(unittest.TestCase):
     @Screen(driver=driver)
     def test_3_click_landlord_button(self):
         # 切换至房东标签页
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[1]/div[1]/div/span[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[1]/div[1]/div/span[2]'))).click()
         # 打开操作菜单栏
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/section/main/div[1]/div/div[5]/div[2]/table/tbody/tr[1]/td[21]/div/button/span/div/button/span'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/section/main/div[1]/div/div[5]/div[2]/table/tbody/tr[1]/td[21]/div/button/span/div/button/span'))).click()
         # 房东退房按钮
-        self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR,'body > ul > div.el-tree > div:nth-child(4) > div > span.el-tree-node__label'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,'body > ul > div.el-tree > div:nth-child(4) > div > span.el-tree-node__label'))).click()
         time.sleep(3)
 
     # 退房信息
@@ -64,9 +64,9 @@ class landlordCheckOutCase(unittest.TestCase):
         # 气止数
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[3]/div[3]/div/div/div/div/input'))).send_keys(self.common_utill.free_random_one_num(1,1000))
         # 物管费交至
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[3]/div[4]/div/div/div/div/input'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[3]/div[4]/div/div/div/div/input'))).click()
         # 选择日期
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[2]/div[1]/div/div[2]/table[1]/tbody/tr[5]/td[4]/div/span'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[2]/div[1]/div/div[2]/table[1]/tbody/tr[5]/td[4]/div/span'))).click()
 
     # 房东应退还
     @Screen(driver=driver)
@@ -115,7 +115,7 @@ class landlordCheckOutCase(unittest.TestCase):
     # 提交退房
     @Screen(driver=driver)
     def test_9_click_landlord_button(self):
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[3]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[3]/button[2]'))).click()
 
     @classmethod
     def tearDownClass(cls):

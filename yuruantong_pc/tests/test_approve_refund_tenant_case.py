@@ -44,14 +44,14 @@ class approveRefundTenant(unittest.TestCase):
 
         time.sleep(3)
         # 点击租客退房 进入
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[1]/span[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[1]/span[2]'))).click()
 
 
     # 租客审批
     @Screen(driver=driver)
     def test_approve_refund_tenant_detail(self):
         # 点击租客确认
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[13]/div/div/div'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[13]/div/div/div'))).click()
 
         time.sleep(2)
         # 备注 当前时间
@@ -59,7 +59,7 @@ class approveRefundTenant(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[6]/div/div/div[2]/div/div[2]/div[2]/div/textarea'))).send_keys(current_time)
 
         # 点击租客确认弹框 通过
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[6]/div/div/div[2]/div/div[3]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[6]/div/div/div[2]/div/div[3]/button[2]'))).click()
 
         # # 点击租客确认弹框 驳回
         # self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[6]/div/div/div[2]/div/div[3]/button[1]'))).click()
@@ -68,10 +68,10 @@ class approveRefundTenant(unittest.TestCase):
         time.sleep(2)
 
         # 点击审批
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[14]/div/div/div'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[14]/div/div/div'))).click()
 
         # 点击审批弹框 通过
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[4]/div/div/div[2]/div/div[2]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[4]/div/div/div[2]/div/div[2]/button[2]'))).click()
 
         # # 点击审批弹框 驳回
         # self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[4]/div/div/div[2]/div/div[2]/button[1]'))).click()
@@ -79,11 +79,11 @@ class approveRefundTenant(unittest.TestCase):
         time.sleep(2)
 
         # 点击复审
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[15]/div/div/div'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[15]/div/div/div'))).click()
         time.sleep(2)
 
         # 点击复审弹框 通过
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div/div[2]/div[2]/div/div/div[3]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div/div/div[2]/div[2]/div/div/div[3]/button[2]'))).click()
 
         # # 点击复审弹框 驳回
         # self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div/div[2]/div[2]/div/div/div[3]/button[1]'))).click()

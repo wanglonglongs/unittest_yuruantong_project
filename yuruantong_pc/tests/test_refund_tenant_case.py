@@ -66,10 +66,10 @@ class refundTenant(unittest.TestCase):
     @Screen(driver=driver)
     def test_enter_refund_tenant(self):
         # 点击操作按钮
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/section/main/div[1]/div/div/div/div[4]/div[2]/table/tbody/tr[1]/td[24]/div/div[2]/button/span/div/button'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/section/main/div[1]/div/div/div/div[4]/div[2]/table/tbody/tr[1]/td[24]/div/div[2]/button/span/div/button'))).click()
 
         # 点击租客退房
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/ul/div[1]/div[4]/div/span[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/ul/div[1]/div[4]/div/span[2]'))).click()
         self.logger.info("进入租客退房界面-success")
 
     # 进入租客退房操作界面,信息填写 (应退还给租客)
@@ -181,7 +181,7 @@ class refundTenant(unittest.TestCase):
     def test_refund_tenant_confirm(self):
         time.sleep(2)
         # 确认
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[3]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[3]/button[2]'))).click()
         time.sleep(2)
         # # 取消
         # self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/section/main/div[1]/div/div/div/div[4]/div[2]/table/tbody/tr[1]/td[24]/div/div[2]/button/span/div/button'))).click()

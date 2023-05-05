@@ -43,12 +43,12 @@ class checkInTenant(unittest.TestCase):
     @Screen(driver=driver)
     def test_register_tenant_openTag_page(self):
         # 点击菜单选项栏-房源
-        self.wait.until(EC.presence_of_element_located(
+        self.wait.until(EC.element_to_be_clickable(
             (By.XPATH, self.element["MENU_HOUSING_RESOURCES"]))).click()
         time.sleep(2)
 
         # 点击二级菜单按钮-整租管理
-        self.wait.until(EC.presence_of_element_located(
+        self.wait.until(EC.element_to_be_clickable(
             (By.XPATH, self.element["MENU_WHOLE_MANAGEMENT"]))).click()
 
         # 验证当前已经打开整租页标签
@@ -84,9 +84,9 @@ class checkInTenant(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[4]/div[1]/div/div/div/div[1]/input'))).send_keys(yu_ruan_common.random_string_number(yu_ruan_common.free_random_one_num(8, 10)))
 
         # 证件类型选择 默认台胞证
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[4]/div[2]/div/div[1]/div/input'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[4]/div[2]/div/div[1]/div/input'))).click()
         time.sleep(1)
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[2]/div[1]/div[1]/ul/li[3]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[2]/div[1]/div[1]/ul/li[3]'))).click()
         # 台胞证默认值
         self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[4]/div[2]/div/div[2]/input'))).send_keys(yu_ruan_common.free_random_many_num(yu_ruan_common.free_random_one_num(8,11)))
 
@@ -97,37 +97,37 @@ class checkInTenant(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[4]/div[4]/div/div/div/div/input'))).send_keys(yu_ruan_common.random_create_phone())
 
         # 业务人员点击
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[5]/div[1]/div/div/div/div/div[1]/input'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[5]/div[1]/div/div/div/div/div[1]/input'))).click()
         time.sleep(1)
         # 业务人员选择
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[3]/div[1]/div[1]/ul/li[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[3]/div[1]/div[1]/ul/li[2]'))).click()
 
         # 协助人员点击
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[5]/div[2]/div/div/div/div/input'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[5]/div[2]/div/div/div/div/input'))).click()
         time.sleep(1)
         # 协助人员选择
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[4]/div[1]/div[1]/ul/li[1]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[4]/div[1]/div[1]/ul/li[1]'))).click()
 
         # 渠道来源点击
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[5]/div[4]/div/div/div/div/div[1]/input'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[5]/div[4]/div/div/div/div/div[1]/input'))).click()
         time.sleep(1)
         # 渠道来源选择
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[5]/div[1]/div[1]/ul/li[1]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[5]/div[1]/div[1]/ul/li[1]'))).click()
 
         # 租赁期限年 点击
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[7]/div[3]/div/div/div/div[1]/div/div[1]/input'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[7]/div[3]/div/div/div/div[1]/div/div[1]/input'))).click()
         time.sleep(1)
         # 租赁期限年 选择
-        self.wait.until(EC.presence_of_element_located((By.XPATH,f'/html/body/div[6]/div[1]/div[1]/ul/li[{yu_ruan_common.free_random_one_num(2,5)}]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,f'/html/body/div[6]/div[1]/div[1]/ul/li[{yu_ruan_common.free_random_one_num(2,5)}]'))).click()
 
         # 租赁期限月 点击
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[7]/div[3]/div/div/div/div[2]/div/div/input'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[7]/div[3]/div/div/div/div[2]/div/div/input'))).click()
         time.sleep(1)
         # 租赁期限月 选择
-        self.wait.until(EC.presence_of_element_located((By.XPATH,f'/html/body/div[7]/div[1]/div[1]/ul/li[{yu_ruan_common.free_random_one_num(1,11)}]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,f'/html/body/div[7]/div[1]/div[1]/ul/li[{yu_ruan_common.free_random_one_num(1,11)}]'))).click()
 
         # 缴费方式
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[1]/div/div/div/div[2]/div/span'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[1]/div/div/div/div[2]/div/span'))).click()
 
         # 出房价格
         price = yu_ruan_common.free_random_many_num(4)
@@ -135,10 +135,10 @@ class checkInTenant(unittest.TestCase):
 
         time.sleep(1)
         # 房屋押金
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[3]/div/div/div/div[2]/div/span'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[3]/div/div/div/div[2]/div/span'))).click()
 
         # 提前缴费
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[4]/div/div/div/div[2]/div/span[1]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[4]/div/div/div/div[2]/div/span[1]'))).click()
         time.sleep(2)
 
         # 备注 当前时间
@@ -146,11 +146,11 @@ class checkInTenant(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[17]/div/div/div/div/div/textarea'))).send_keys(current_time)
 
         # 下一步 进入预览账单列表
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[3]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[3]/button[2]'))).click()
         time.sleep(2)
 
         # 下一步 进入上传合同
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[5]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[5]/button[2]'))).click()
         time.sleep(2)
 
         # 身份证照片
@@ -167,7 +167,7 @@ class checkInTenant(unittest.TestCase):
         time.sleep(1)
 
         # 提交初审
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[3]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[3]/button[2]'))).click()
 
         # # 提交复审
         # self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div/div[3]/div[3]/button[3]'))).click()

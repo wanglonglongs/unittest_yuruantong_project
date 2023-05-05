@@ -44,20 +44,20 @@ class approveCheckTenant(unittest.TestCase):
     @Screen(driver=driver)
     def test_approve_tenant_detail(self):
         # 点击初审
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[16]/div/div/div'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[16]/div/div/div'))).click()
 
         # 点击初审弹框 通过
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[4]/div/div/div[2]/div/div[2]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[4]/div/div/div[2]/div/div[2]/button[2]'))).click()
 
         # # 点击初审弹框 驳回
         # self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[4]/div/div/div[2]/div/div[2]/button[1]'))).click()
         time.sleep(5)
 
         # 点击复审
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[18]/div/div/div'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[18]/div/div/div'))).click()
 
         # 点击复审弹框 通过
-        self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div/div/div[2]/div/div[2]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div/div/div[2]/div/div[2]/button[2]'))).click()
 
         # # 点击复审弹框 驳回
         # self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[6]/div/div/div[2]/div/div[2]/button[1]'))).click()
