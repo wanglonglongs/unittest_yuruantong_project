@@ -13,6 +13,7 @@ from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
 
 class wholeManagementCase(unittest.TestCase):
+    """ 这个会展示在报告里面 """
 
     driver = webdriver.Chrome()
 
