@@ -14,11 +14,13 @@ from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
 class outApproverLandl(unittest.TestCase):
 
-    driver = webdriver.Chrome()
+
 
     @classmethod
     def setUpClass(cls):
         # 创建Chrome浏览器对象
+        cls.driver = webdriver.Chrome()
+        cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
         cls.element_locator_yaml = r'../configs/element_locator/fang_dong_login.yaml '
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
@@ -26,7 +28,6 @@ class outApproverLandl(unittest.TestCase):
         cls.logger = LogManager('审批').get_logger_and_add_handlers(10,log_filename='审批.log')
         cls.common_utill = yu_ruan_common
 
-    @Screen(driver=driver)
     def test_1_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
@@ -36,7 +37,6 @@ class outApproverLandl(unittest.TestCase):
         # logger.info('登录成功')
         self.logger.info("登录寓软通账号成功 -success")
 
-    @Screen(driver=driver)
     def test_2_jump_examine_page(self):
         time.sleep(3)
         # 创建LoginPage对象
@@ -44,7 +44,6 @@ class outApproverLandl(unittest.TestCase):
         self.logger.info("跳转房东审批页面成功 -success")
 
     # 房东审批
-    @Screen(driver=driver)
     def test_3_click_careful_button(self):
         # 切换至退房审批页面
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[1]/span[2]'))).click()

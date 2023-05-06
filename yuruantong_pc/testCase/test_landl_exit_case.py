@@ -14,11 +14,10 @@ from nb_log import LogManager
 
 class landlordCheckOutCase(unittest.TestCase):
 
-    driver = webdriver.Chrome()
-
     @classmethod
     def setUpClass(cls):
         # 创建Chrome浏览器对象
+        cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
         cls.element_locator_yaml = r'../configs/element_locator/fang_dong_login.yaml '
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
@@ -26,7 +25,6 @@ class landlordCheckOutCase(unittest.TestCase):
         cls.logger = LogManager('房东退房').get_logger_and_add_handlers(10,log_filename='房东退房.log')
         cls.common_utill = yu_ruan_common
 
-    @Screen(driver=driver)
     def test_1_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
@@ -36,7 +34,6 @@ class landlordCheckOutCase(unittest.TestCase):
         # logger.info('登录成功')
         self.logger.info("登录寓软通账号成功 -success")
 
-    @Screen(driver=driver)
     def test_2_jump_whole_page(self):
         time.sleep(3)
         # 创建LoginPage对象
@@ -44,7 +41,6 @@ class landlordCheckOutCase(unittest.TestCase):
         self.logger.info("重新进入整租页面 -success")
 
     # 房东退房
-    @Screen(driver=driver)
     def test_3_click_landlord_button(self):
         # 切换至房东标签页
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[1]/div[1]/div/span[2]'))).click()
@@ -55,7 +51,6 @@ class landlordCheckOutCase(unittest.TestCase):
         time.sleep(3)
 
     # 退房信息
-    @Screen(driver=driver)
     def test_4_click_landlord_button(self):
         # 水止数
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[3]/div[1]/div/div/div/div/input'))).send_keys(self.common_utill.free_random_one_num(1,1000))
@@ -69,7 +64,6 @@ class landlordCheckOutCase(unittest.TestCase):
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[2]/div[1]/div/div[2]/table[1]/tbody/tr[5]/td[4]/div/span'))).click()
 
     # 房东应退还
-    @Screen(driver=driver)
     def test_5_click_landlord_button(self):
         # 退还押金
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[5]/div[1]/div/div/div/div/input'))).send_keys(self.common_utill.free_random_one_num(1,1000))
@@ -81,7 +75,6 @@ class landlordCheckOutCase(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[5]/div[4]/div/div/div/div/input'))).send_keys(self.common_utill.free_random_one_num(1,1000))
 
     # 被房东扣除金额
-    @Screen(driver=driver)
     def test_6_click_landlord_button(self):
         # 水费
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[7]/div[1]/div/div/div/div/input'))).send_keys(self.common_utill.free_random_one_num(1,500))
@@ -101,19 +94,16 @@ class landlordCheckOutCase(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[8]/div[4]/div/div/div/div/input'))).send_keys(self.common_utill.free_random_one_num(1,500))
 
     # 退房照片
-    @Screen(driver=driver)
     def test_7_click_landlord_button(self):
         # 退房照片
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[12]/div/div/div/div/div[1]/div/input'))).send_keys(rf"F:\photo\{self.common_utill.free_random_one_num(1,4)}.jpg")
 
     # 备注信息
-    @Screen(driver=driver)
     def test_8_click_landlord_button(self):
         # 备注
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[14]/div/div/div/div/div/textarea'))).send_keys('%Y-%m-%d %H:%M:%S')
 
     # 提交退房
-    @Screen(driver=driver)
     def test_9_click_landlord_button(self):
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[3]/button[2]'))).click()
 

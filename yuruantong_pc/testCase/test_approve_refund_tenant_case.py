@@ -13,11 +13,12 @@ from nb_log import get_logger, LogManager
 
 
 class approveRefundTenant(unittest.TestCase):
-    driver = webdriver.Chrome()
+
 
     @classmethod
     def setUpClass(cls):
         # 创建Chrome浏览器对象
+        cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
         cls.element_locator_yaml = '../configs/element_locator/fang_dong_login.yaml'
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
@@ -27,7 +28,6 @@ class approveRefundTenant(unittest.TestCase):
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
         cls.logger = LogManager('租客退房审批').get_logger_and_add_handlers(10, log_filename='租客退房审批.log')
 
-    @Screen(driver=driver)
     def test_approve_refund_tenant_login(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
@@ -37,7 +37,6 @@ class approveRefundTenant(unittest.TestCase):
         self.logger.info("租客退房审批-登录-success")
         time.sleep(2)
 
-    @Screen(driver=driver)
     def test_approve_refund_tenant_openTag_page(self):
         # 进入租客审批界面
         self.driver.get('http://test.yuruantong.com/amp/approval/?v=#/businessTenant')
@@ -48,7 +47,6 @@ class approveRefundTenant(unittest.TestCase):
 
 
     # 租客审批
-    @Screen(driver=driver)
     def test_approve_refund_tenant_detail(self):
         # 点击租客确认
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[13]/div/div/div'))).click()

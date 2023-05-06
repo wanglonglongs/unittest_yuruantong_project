@@ -1,9 +1,14 @@
+LoginPage:
+  username_input: ['xpath','/html/body/div/div/div/div[1]/form/div[3]/input']
+  pwd_input: ['xpath','/html/body/div/div/div/div[1]/form/div[4]/div/input']
+  login_btn: ['xpath','/html/body/div/div/div/div[1]/form/div[6]/div/button']
 
-
-SHOU_YE_ACCOUNT: /html/body/div/div/div/div[1]/form/div[3]/input
-SHOU_YE_PASSWORD: /html/body/div/div/div/div[1]/form/div[4]/div/input
-SHOU_YE_LOGIN_BUTTON: /html/body/div/div/div/div[1]/form/div[6]/div/button
-PAGE_LOGIN_NAME: /html/body/div[1]/div/div/div[2]/div[1]/div[1]/div[1]/div[3]/div[2]/div/div/div/div/span
+LeftMenuTag:
+  # level one
+  home_page_tag: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[1]/a/li/span']
+  house_source_tag: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/div']
+  # level two
+  whole_management_tag: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/ul/div[1]']
 # ------------  Menu List --------------
 MENU_HOUSING_RESOURCES: /html/body/div[1]/div/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/div
 MENU_WHOLE_MANAGEMENT: /html/body/div[1]/div/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/ul/div[1]/a/li/span

@@ -17,11 +17,11 @@ from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
 
 class checkInTenant(unittest.TestCase):
-    driver = webdriver.Chrome()
 
     @classmethod
     def setUpClass(cls):
         # 创建Chrome浏览器对象
+        cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
         cls.element_locator_yaml = '../configs/element_locator/fang_dong_login.yaml'
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
@@ -31,7 +31,6 @@ class checkInTenant(unittest.TestCase):
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
         cls.logger = LogManager('登记租客').get_logger_and_add_handlers(10,log_filename='登记租客.log')
 
-    @Screen(driver=driver)
     def test_register_tenant_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
@@ -40,7 +39,6 @@ class checkInTenant(unittest.TestCase):
         login_page.login("18196627126", "aaaa123456")
         self.logger.info("登记租客-登录-success")
 
-    @Screen(driver=driver)
     def test_register_tenant_openTag_page(self):
         # 点击菜单选项栏-房源
         self.wait.until(EC.element_to_be_clickable(
@@ -61,7 +59,6 @@ class checkInTenant(unittest.TestCase):
         self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
 
     # 租赁状态未租选择
-    @Screen(driver=driver)
     def test_register_tenant_detail(self):
         # 租赁状态下拉
         lease_status = f'document.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(2) > div > div > div > input").click()'
