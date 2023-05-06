@@ -5,7 +5,7 @@ generates a HTML report to show the result at a glance.
 The simplest way to use this is to invoke its main method. E列表.g.
     import unittest
     import HTMLTestRunner
-    ... define your tests ...
+    ... define your testCase ...
     if __name__ == '__main__':
         HTMLTestRunner.main()
 For more customization options, instantiates a HTMLTestRunner object.
@@ -724,7 +724,7 @@ class HTMLTestRunner(Template_mixin):
 
 
 ##############################################################################
-# Facilities for running tests from the command line
+# Facilities for running testCase from the command line
 ##############################################################################
 
 # Note: Reuse unittest.TestProgram to launch test. In the future we may

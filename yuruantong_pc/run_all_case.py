@@ -5,7 +5,7 @@
 # import HTMLTestRunnerNew
 #
 # # 用例路径
-# case_path = os.path.join(os.path.dirname(__file__),"tests")
+# case_path = os.path.join(os.path.dirname(__file__),"testCase")
 # # 报告存放路径
 # os.chdir('./result')
 # report_path = os.path.join(os.getcwd(), 'report')

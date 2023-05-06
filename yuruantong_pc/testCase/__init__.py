@@ -3,14 +3,14 @@ import unittest
 import os
 import time
 import HTMLTestRunnerNew
-from yuruantong_pc.tests.test_approve_check_tenant import approveCheckTenant
-from yuruantong_pc.tests.test_approve_refund_tenant_case import approveRefundTenant
-from yuruantong_pc.tests.test_housing_management_case import wholeManagementCase
-from yuruantong_pc.tests.test_check_tenant_case import checkInTenant
-from yuruantong_pc.tests.test_examine_and_approve import examineApproveCase
-from yuruantong_pc.tests.test_landl_exit_case import landlordCheckOutCase
-from yuruantong_pc.tests.test_refund_tenant_case import refundTenant
-from yuruantong_pc.tests.test_out_approve_landl import outApproverLandl
+from yuruantong_pc.testCase.test_approve_check_tenant import approveCheckTenant
+from yuruantong_pc.testCase.test_approve_refund_tenant_case import approveRefundTenant
+from yuruantong_pc.testCase.test_housing_management_case import wholeManagementCase
+from yuruantong_pc.testCase.test_check_tenant_case import checkInTenant
+from yuruantong_pc.testCase.test_examine_and_approve import examineApproveCase
+from yuruantong_pc.testCase.test_landl_exit_case import landlordCheckOutCase
+from yuruantong_pc.testCase.test_refund_tenant_case import refundTenant
+from yuruantong_pc.testCase.test_out_approve_landl import outApproverLandl
 
 # 用例路径
 # 报告存放路径
