@@ -82,8 +82,6 @@ def all_case():
     print(suite)
     return(suite)
 
-    # 
-
 
 if __name__ == '__main__':
 
