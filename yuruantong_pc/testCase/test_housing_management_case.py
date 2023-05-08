@@ -13,8 +13,7 @@ from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
 
 class wholeManagementCase(unittest.TestCase):
-
-
+    """   登记房东    """
 
     @classmethod
     def setUpClass(cls):
@@ -36,7 +35,7 @@ class wholeManagementCase(unittest.TestCase):
         # logger.info('登录成功')
         self.logger.info("登录寓软通账号成功 -success")
 
-        time.sleep(6)
+
 
     def test_openTag_page(self):
         # 重新进入整租页面中
@@ -48,6 +47,7 @@ class wholeManagementCase(unittest.TestCase):
         self.logger.info("进入登记房东页面成功 -success")
     # 填写登记基本信息
     def test_write_basic_information(self):
+        '''    填写房东基本信息    '''
 
         # 所属店面选择
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[1]/div/div/div/div/div/input'))).click()
@@ -178,10 +178,10 @@ class wholeManagementCase(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[3]/div/div[1]/div/input'))).send_keys(rf"F:\photo\{self.common_utill.free_random_one_num(1,4)}.jpg")
 
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[4]/div/div[1]/div/input'))).send_keys(rf"F:\photo\{self.common_utill.free_random_one_num(1,4)}.jpg")
+
         time.sleep(3)
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[3]/button[2]'))).click()
 
-        time.sleep(8)
         self.logger.info("登记房东初审成功-success")
 
     @classmethod

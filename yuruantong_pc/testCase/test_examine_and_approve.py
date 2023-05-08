@@ -13,6 +13,7 @@ from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
 
 class examineApproveCase(unittest.TestCase):
+    """   房东审批    """
 
     @classmethod
     def setUpClass(cls):

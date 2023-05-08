@@ -17,6 +17,7 @@ from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
 
 class checkInTenant(unittest.TestCase):
+    """   登记租客    """
 
     @classmethod
     def setUpClass(cls):

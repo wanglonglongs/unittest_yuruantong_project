@@ -17,6 +17,7 @@ from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
 
 class refundTenant(unittest.TestCase):
+    """   租客退房    """
 
     @classmethod
     def setUpClass(cls):

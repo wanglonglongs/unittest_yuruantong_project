@@ -13,6 +13,7 @@ from nb_log import LogManager
 
 
 class landlordCheckOutCase(unittest.TestCase):
+    """   房东退房    """
 
     @classmethod
     def setUpClass(cls):
@@ -60,6 +61,7 @@ class landlordCheckOutCase(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[3]/div[3]/div/div/div/div/input'))).send_keys(self.common_utill.free_random_one_num(1,1000))
         # 物管费交至
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[3]/div[4]/div/div/div/div/input'))).click()
+        time.sleep(2)
         # 选择日期
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[2]/div[1]/div/div[2]/table[1]/tbody/tr[5]/td[4]/div/span'))).click()
 

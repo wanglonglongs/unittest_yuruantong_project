@@ -13,6 +13,7 @@ from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
 
 class outApproverLandl(unittest.TestCase):
+    """   房东退房审批    """
 
 
 
@@ -25,7 +26,7 @@ class outApproverLandl(unittest.TestCase):
         cls.element_locator_yaml = r'../configs/element_locator/fang_dong_login.yaml '
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
-        cls.logger = LogManager('审批').get_logger_and_add_handlers(10,log_filename='审批.log')
+        cls.logger = LogManager('房东退房审批').get_logger_and_add_handlers(10,log_filename='审批.log')
         cls.common_utill = yu_ruan_common
 
     def test_1_login_yuRuanTong(self):

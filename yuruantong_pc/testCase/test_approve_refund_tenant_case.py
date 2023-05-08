@@ -13,7 +13,7 @@ from nb_log import get_logger, LogManager
 
 
 class approveRefundTenant(unittest.TestCase):
-
+    """   租客退房审批    """
 
     @classmethod
     def setUpClass(cls):
@@ -26,7 +26,7 @@ class approveRefundTenant(unittest.TestCase):
         cls.element_locator_whole_yaml = '../configs/element_locator/whole_rent_path_enum.yaml'
         cls.element_whole = YamlHelper.read_yaml(cls.element_locator_whole_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
-        cls.logger = LogManager('租客退房审批').get_logger_and_add_handlers(10, log_filename='租客退房审批.log')
+        cls.logger = LogManager('租客退房审批').get_logger_and_add_handlers(10, log_filename='审批.log')
 
     def test_approve_refund_tenant_login(self):
         # 创建LoginPage对象
