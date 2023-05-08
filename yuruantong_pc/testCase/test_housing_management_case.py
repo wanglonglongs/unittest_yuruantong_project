@@ -31,7 +31,6 @@ class wholeManagementCase(unittest.TestCase):
         cls.logger = LogManager('登记房东').get_logger_and_add_handlers(10,log_filename='登记房东.log')
         cls.common_utill = yu_ruan_common
 
-
     def test_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
@@ -41,7 +40,6 @@ class wholeManagementCase(unittest.TestCase):
         account_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="mainDiv"]/div/div[2]/div[1]/div[1]/div[1]/div[3]/div[2]/div/div/div/div/span'))).text
         assert account_show_title == "李一昂", f"{self.logger.error('断言失败：登录寓软通账号失败！')}"
         self.logger.info('断言成功：登录寓软通账号成功！')
-
 
     def test_openTag_page(self):
         # 重新进入整租页面中
@@ -248,8 +246,8 @@ class wholeManagementCase(unittest.TestCase):
         ''' 进入账单明细页面 '''
         time.sleep(2)
         # 断言账单是否成功生成
-        bill_preview_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[4]/div[2]/div[3]/div/div[3]/table/tbody/tr[1]/td[1]/div'))).text
-        assert bill_preview_show_title == "1", f"{self.logger.error('断言失败：未进入账单预览页面！或没有生成账单')}"
+        bill_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[4]/div[2]/div[3]/div/div[3]/table/tbody/tr[1]/td[1]/div'))).text
+        assert bill_show_title == "1", f"{self.logger.error('断言失败：未进入账单预览页面！或没有生成账单')}"
         self.logger.info('断言成功：已进入账单预览页面！且成功生成账单。')
 
         # 点击下一步按钮
@@ -260,8 +258,8 @@ class wholeManagementCase(unittest.TestCase):
     # 上传合同信息 并提交初审
     def test_upload_contract_information(self):
         ''' 上传合同信息 提交初审 '''
-        bill_preview_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[1]/span'))).text
-        assert bill_preview_show_title == "上传照片", f"{self.logger.error('断言失败：未进入上传合同页面！')}"
+        upload_the_contract_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[1]/span'))).text
+        assert upload_the_contract_title == "上传照片", f"{self.logger.error('断言失败：未进入上传合同页面！')}"
         self.logger.info('断言成功：已进入上传合同页面！')
 
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[1]/div/div[1]/div/input'))).send_keys(rf"F:\photo\{self.common_utill.free_random_one_num(1,4)}.jpg")

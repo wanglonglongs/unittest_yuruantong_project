@@ -23,7 +23,7 @@ class examineApproveCase(unittest.TestCase):
         cls.element_locator_yaml = r'../configs/element_locator/fang_dong_login.yaml '
         cls.element = YamlHelper.read_yaml(cls.element_locator_yaml)
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
-        cls.logger = LogManager('审批').get_logger_and_add_handlers(10,log_filename='审批.log')
+        cls.logger = LogManager('登记房东审批').get_logger_and_add_handlers(10,log_filename='审批.log')
         cls.common_utill = yu_ruan_common
 
     def test_login_yuRuanTong(self):
@@ -32,9 +32,10 @@ class examineApproveCase(unittest.TestCase):
         # 调用login()方法
         login_page.login("18196627126", "aaaa123456")
         time.sleep(5)
-        # logger.info('登录成功')
-        self.logger.info("登录寓软通账号成功 -success")
-
+        account_show_title = self.wait.until(EC.presence_of_element_located(
+            (By.XPATH, '//*[@id="mainDiv"]/div/div[2]/div[1]/div[1]/div[1]/div[3]/div[2]/div/div/div/div/span'))).text
+        assert account_show_title == "李一昂", f"{self.logger.error('断言失败：登录寓软通账号失败！')}"
+        self.logger.info('断言成功：登录寓软通账号成功！')
 
     def test_jump_examine_page(self):
         time.sleep(3)
@@ -42,6 +43,12 @@ class examineApproveCase(unittest.TestCase):
         self.driver.get("http://test.yuruantong.com/amp/approval/")
         self.logger.info("跳转房东审批页面成功 -success")
         time.sleep(3)
+        # 重新进入整租页面中
+        self.driver.get("http://test.yuruantong.com/amp/approval/")
+        register_landlord_but_title = self.wait.until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[2]/table/thead/tr/th[17]/div'))).text
+        assert register_landlord_but_title == "审批", f"{self.logger.error('断言失败：未进入房东审批页面！')}"
+        self.logger.info('断言成功：已进入房东审批页面！')
 
     # 房东审批
     def test_click_careful_button(self):
