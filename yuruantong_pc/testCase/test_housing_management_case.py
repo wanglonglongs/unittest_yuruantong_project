@@ -19,7 +19,10 @@ class wholeManagementCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # 创建Chrome浏览器对象
+        # 创建一个参数对象，用来控制chrome以无界面模式打开
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
         cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
         cls.element_locator_yaml = r'../configs/element_locator/fang_dong_login.yaml '
@@ -28,24 +31,31 @@ class wholeManagementCase(unittest.TestCase):
         cls.logger = LogManager('登记房东').get_logger_and_add_handlers(10,log_filename='登记房东.log')
         cls.common_utill = yu_ruan_common
 
+
     def test_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
         # 调用login()方法
         login_page.login("18196627126", "aaaa123456")
         time.sleep(5)
-        # logger.info('登录成功')
-        self.logger.info("登录寓软通账号成功 -success")
+        account_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="mainDiv"]/div/div[2]/div[1]/div[1]/div[1]/div[3]/div[2]/div/div/div/div/span'))).text
+        assert account_show_title == "李一昂", f"{self.logger.error('断言失败：登录寓软通账号失败！')}"
+        self.logger.info('断言成功：登录寓软通账号成功！')
+
 
     def test_openTag_page(self):
         # 重新进入整租页面中
         self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
+        register_landlord_but_title = self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/button[1]'))).text
+        assert register_landlord_but_title == "登记房东", f"{self.logger.error('断言失败：未进入整租页面！')}"
+        self.logger.info('断言成功：已进入整租页面！')
 
     def test_pen_register_landlord(self):
         # 进入登记房东整租页面 点击登记房东按钮
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/button[1]/span'))).click()
-        self.logger.info("进入登记房东页面成功 -success")
-        time.sleep(2)
+        basic_information_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[1]/span'))).text
+        assert basic_information_show_title == "基本信息", f"{self.logger.error('断言失败：未进入登记房东页面！')}"
+        self.logger.info('断言成功：已进入登记房东页面！')
 
     # 填写登记基本信息
     def test_write_basic_information(self):
@@ -86,7 +96,7 @@ class wholeManagementCase(unittest.TestCase):
         # # 朝向下拉选择
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[6]/div[1]/div[1]/ul/li[1]'))).click()
 
-        self.logger.info("房东基本信息填写 -success")
+        self.logger.info("(房东) 基本信息")
 
     # # 填写登记房东信息
     def test_write_landlord_information(self):
@@ -119,7 +129,7 @@ class wholeManagementCase(unittest.TestCase):
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[8]/div[1]/div[1]/ul/li[2]/span'))).click()
         # 房东包物业 金额填写
         # self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[4]/div[10]/div/div/div/div[2]/input'))).send_keys("50")
-        self.logger.info("房东信息填写成功 -success")
+        self.logger.info("(房东) 房东信息")
 
     # 填写托管房东信息
     def test_write_trusteeship_information(self):
@@ -214,23 +224,34 @@ class wholeManagementCase(unittest.TestCase):
 
         # 点击下一步
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[3]/button[2]'))).click()
-
+        self.logger.info("(房东) 托管信息")
+        time.sleep(3)
 
     # 填写物品管理页面
     def test_write_Item_information(self):
         ''' 进入物品管理页面 '''
         time.sleep(2)
+
+        bill_preview_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/button/span'))).text
+        print(bill_preview_show_title)
+        assert bill_preview_show_title == "添加", f"{self.logger.error('断言失败：未进入物品登记页面！')}"
+        self.logger.info('断言成功：已进入物品登记页面！')
+
         # 删除物品按钮点击
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[3]/table/tbody/tr/td[7]/div/i'))).click()
-        time.sleep(2)
         # 点击下一步
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[3]/div[3]/button[2]'))).click()
-        self.logger.info("物品管理页面 -success")
+        time.sleep(3)
 
     # 账单明细页面
     def test_Read_bills_information(self):
         ''' 进入账单明细页面 '''
         time.sleep(2)
+        # 断言账单是否成功生成
+        bill_preview_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[4]/div[2]/div[3]/div/div[3]/table/tbody/tr[1]/td[1]/div'))).text
+        assert bill_preview_show_title == "1", f"{self.logger.error('断言失败：未进入账单预览页面！或没有生成账单')}"
+        self.logger.info('断言成功：已进入账单预览页面！且成功生成账单。')
+
         # 点击下一步按钮
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[4]/div[3]/button[2]'))).click()
         self.logger.info("账单信息页面 -success")
@@ -239,6 +260,10 @@ class wholeManagementCase(unittest.TestCase):
     # 上传合同信息 并提交初审
     def test_upload_contract_information(self):
         ''' 上传合同信息 提交初审 '''
+        bill_preview_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[1]/span'))).text
+        assert bill_preview_show_title == "上传照片", f"{self.logger.error('断言失败：未进入上传合同页面！')}"
+        self.logger.info('断言成功：已进入上传合同页面！')
+
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[1]/div/div[1]/div/input'))).send_keys(rf"F:\photo\{self.common_utill.free_random_one_num(1,4)}.jpg")
 
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[2]/div/div[1]/div/input'))).send_keys(rf"F:\photo\{self.common_utill.free_random_one_num(1,4)}.jpg")
@@ -250,10 +275,14 @@ class wholeManagementCase(unittest.TestCase):
         time.sleep(3)
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[3]/button[2]'))).click()
 
-        self.logger.info("登记房东初审成功-success")
+        add_prompt_landlord_success = self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[2]/p'))).text
+
+        assert add_prompt_landlord_success == "保存成功", f"{self.logger.error('断言失败：登记房东失败！')}"
+        self.logger.info('断言成功：登记房东成功！')
+
 
     @classmethod
     def tearDownClass(cls):
-        time.sleep(5)
+        time.sleep(10)
         # 关闭浏览器对象
         cls.driver.quit()
