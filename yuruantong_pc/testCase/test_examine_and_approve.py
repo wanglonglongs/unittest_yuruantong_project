@@ -47,7 +47,7 @@ class examineApproveCase(unittest.TestCase):
     def test_click_careful_button(self):
         # 初审
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[17]/div/div'))).click()
-        time.sleep(5)
+        time.sleep(2)
         self.logger.info("点击初审按钮打开弹窗 -success")
         # 弹框 alert 登记房东审批
         preliminary_examination = 'document.querySelector("body > div:nth-child(4) > div > div > div.el-dialog__body > div > div:nth-child(2) > button.el-button.el-button--small.external-btn-size.green-color.font-color").click()'
@@ -58,7 +58,7 @@ class examineApproveCase(unittest.TestCase):
         # 复审
         reexamine = 'document.querySelector("#app > div > div > div > div:nth-child(2) > div > div:nth-child(2) > div > div > div > div.el-table__inner-wrapper > div.el-table__body-wrapper > div > div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default > div > table > tbody > tr:nth-child(1) > td.el-table_1_column_19.is-center.el-table-fixed-column--right.el-table__cell > div > div > div").click()'
         self.driver.execute_script(reexamine)
-        time.sleep(5)
+        time.sleep(2)
 
         # 弹框 alert 登记房东复审
         reexamine1 = 'document.querySelector("body > div:nth-child(6) > div > div > div.el-dialog__body > div > div:nth-child(2) > button.el-button.el-button--small.external-btn-size.green-color.font-color").click()'

@@ -11,7 +11,11 @@ def free_random_one_num(start_num, end_num):
 
 # 随机生成X位字符 纯数字
 def free_random_many_num(num_sign):
-    return "".join(map(lambda x: random.choice(string.digits), range(num_sign)))
+    # 生成第一位不为零的数字
+    first_digit = random.choice(string.digits[1:])
+    # 生成剩余位数的数字
+    rest_digits = "".join(random.choice(string.digits) for _ in range(num_sign - 1))
+    return f"{first_digit}{rest_digits}"
 
 
 # 随机生成X位字符 纯字母

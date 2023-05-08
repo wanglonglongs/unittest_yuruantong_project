@@ -28,6 +28,9 @@ def all_case():
     suite.addTest(wholeManagementCase("test_write_basic_information"))
     suite.addTest(wholeManagementCase("test_write_landlord_information"))
     suite.addTest(wholeManagementCase("test_write_trusteeship_information"))
+    suite.addTest(wholeManagementCase("test_write_delivery_information"))
+    suite.addTest(wholeManagementCase("test_write_deduct_money_information"))
+    suite.addTest(wholeManagementCase("test_write_other_information"))
     suite.addTest(wholeManagementCase("test_write_Item_information"))
     suite.addTest(wholeManagementCase("test_Read_bills_information"))
     suite.addTest(wholeManagementCase("test_upload_contract_information"))
@@ -40,7 +43,12 @@ def all_case():
     # 租客登记
     suite.addTest(checkInTenant("test_register_tenant_login_yuRuanTong"))
     suite.addTest(checkInTenant("test_register_tenant_openTag_page"))
-    suite.addTest(checkInTenant("test_register_tenant_detail"))
+    suite.addTest(checkInTenant("test_lease_status_choose"))
+    suite.addTest(checkInTenant("test_tenant_basics_info"))
+    suite.addTest(checkInTenant("test_tenant_lease_info"))
+    suite.addTest(checkInTenant("test_other_deduct_info"))
+    suite.addTest(checkInTenant("test_preview_bill_info"))
+    suite.addTest(checkInTenant("test_preview_contract_info"))
 
     # 租客登记审批
     suite.addTest(approveCheckTenant("test_approve_tenant_login_yuRuanTong"))
@@ -74,6 +82,7 @@ def all_case():
     suite.addTest(landlordCheckOutCase("test_8_click_landlord_button"))
     suite.addTest(landlordCheckOutCase("test_9_click_landlord_button"))
 
+    # 房东退房审批
     suite.addTest(outApproverLandl("test_1_login_yuRuanTong"))
     suite.addTest(outApproverLandl("test_2_jump_examine_page"))
     suite.addTest(outApproverLandl("test_3_click_careful_button"))

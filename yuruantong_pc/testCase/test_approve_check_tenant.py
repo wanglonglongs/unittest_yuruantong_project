@@ -63,7 +63,7 @@ class approveCheckTenant(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        time.sleep(10)
+        time.sleep(8)
         # 关闭浏览器对象
         cls.driver.quit()
 
