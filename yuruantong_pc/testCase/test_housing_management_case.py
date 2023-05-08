@@ -22,7 +22,7 @@ class wholeManagementCase(unittest.TestCase):
         # 创建一个参数对象，用来控制chrome以无界面模式打开
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--disable-gpu')
+        # chrome_options.add_argument('--disable-gpu')
         cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
         cls.element_locator_yaml = r'../configs/element_locator/fang_dong_login.yaml '

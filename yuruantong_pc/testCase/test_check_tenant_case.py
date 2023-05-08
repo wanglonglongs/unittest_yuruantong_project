@@ -8,7 +8,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from yuruantong_pc.common.yaml_helper import YamlHelper
 from yuruantong_pc.common.packaging_methon.yu_ruan_login import LoginPage
 import random
-from yuruantong_pc.common.error_screenshot import Screen
 import string
 import datetime
 from nb_log import get_logger, LogManager
@@ -32,7 +31,7 @@ class checkInTenant(unittest.TestCase):
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
         cls.logger = LogManager('登记租客').get_logger_and_add_handlers(10,log_filename='登记租客.log')
 
-    def test_register_tenant_login_yuRuanTong(self):
+    def test_1register_tenant_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
 
@@ -40,7 +39,7 @@ class checkInTenant(unittest.TestCase):
         login_page.login("18196627126", "aaaa123456")
         self.logger.info("登记租客-登录-success")
 
-    def test_register_tenant_openTag_page(self):
+    def test_2register_tenant_openTag_page(self):
         # 点击菜单选项栏-房源
         self.wait.until(EC.element_to_be_clickable(
             (By.XPATH, self.element["MENU_HOUSING_RESOURCES"]))).click()
@@ -60,7 +59,7 @@ class checkInTenant(unittest.TestCase):
         self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
 
     # 租赁状态未租选择
-    def test_lease_status_choose(self):
+    def test_3lease_status_choose(self):
         ''' 租赁状态筛选 '''
         # 租赁状态下拉
         lease_status = f'document.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(2) > div > div > div > input").click()'
@@ -81,7 +80,7 @@ class checkInTenant(unittest.TestCase):
         time.sleep(2)
 
     # 租客信息填写
-    def test_tenant_basics_info(self):
+    def test_4tenant_basics_info(self):
         ''' 租客信息填写 '''
         # 租客姓名
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[4]/div[1]/div/div/div/div[1]/input'))).send_keys(yu_ruan_common.random_string_number(yu_ruan_common.free_random_one_num(8, 10)))
@@ -120,7 +119,7 @@ class checkInTenant(unittest.TestCase):
         self.logger.info("租客信息填写完成 -success")
 
     # 租赁信息
-    def test_tenant_lease_info(self):
+    def test_5tenant_lease_info(self):
         ''' 租赁信息填写 '''
 
         # 租赁期限年 点击
@@ -149,15 +148,18 @@ class checkInTenant(unittest.TestCase):
         # 提前缴费
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[8]/div[4]/div/div/div/div[2]/div/span[1]'))).click()
 
-        # 租房性质
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[9]/div[1]/div/div/div/div/div[1]/input'))).click()
-        time.sleep(1)
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[9]/div[1]/div[1]/ul/li[2]'))).click()
-
+        # # 租房性质
+        # self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[9]/div[1]/div/div/div/div/div[1]/input'))).click()
+        # # self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[2]/form/div[9]/div[1]/div/div/div/div/div[1]/input'))).send_keys("茶馆")
+        # time.sleep(5)
+        # self.driver.find_element((By,'/html/body/div[10]/div[1]/div[1]/ul/li[1]')).click()
+        # ec_js = 'document.querySelector("#mainDiv > div > div.hasTagsView.main-container > section > div > wujie-app").shadowRoot.querySelector("body > div.el-select-dropdown.el-popper > div.el-scrollbar > div.el-select-dropdown__wrap.el-scrollbar__wrap > ul > li.el-select-dropdown__item > span").click()'
+        # self.driver.execute_script(ec_js)
         self.logger.info("租赁信息填写完成 -success")
 
+
     # 其他扣费
-    def test_other_deduct_info(self):
+    def test_6other_deduct_info(self):
         ''' 其他扣费/备注填写 '''
 
         # 定金抵扣
@@ -173,7 +175,7 @@ class checkInTenant(unittest.TestCase):
         self.logger.info("其他扣费填写完成 -success")
 
     # 进入账单预览页面
-    def test_preview_bill_info(self):
+    def test_7preview_bill_info(self):
         ''' 进入账单预览 '''
         # 下一步 进入预览账单列表
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/div/div[2]/div[3]/button[2]'))).click()
@@ -213,7 +215,7 @@ class checkInTenant(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        time.sleep(10)
+        time.sleep(2000)
         # 关闭浏览器对象
         cls.driver.quit()
 
