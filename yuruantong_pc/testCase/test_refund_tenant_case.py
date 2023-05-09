@@ -198,7 +198,7 @@ class refundTenant(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        time.sleep(100)
+        time.sleep(10)
         # 关闭浏览器对象
         cls.driver.quit()
 
