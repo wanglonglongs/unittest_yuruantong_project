@@ -29,7 +29,7 @@ class outApproverLandl(unittest.TestCase):
         cls.logger = LogManager('房东退房审批').get_logger_and_add_handlers(10,log_filename='审批.log')
         cls.common_utill = yu_ruan_common
 
-    def test_1login_yuRuanTong(self):
+    def test_login_yuRuanTong(self):
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
         # 调用login()方法
@@ -38,14 +38,14 @@ class outApproverLandl(unittest.TestCase):
         # logger.info('登录成功')
         self.logger.info("登录寓软通账号成功 -success")
 
-    def test_2jump_examine_page(self):
+    def test_jump_examine_page(self):
         time.sleep(3)
         # 创建LoginPage对象
         self.driver.get("http://test.v1.yuruantong.com/approval/")
         self.logger.info("跳转房东审批页面成功 -success")
         time.sleep(1)
     # 房东审批
-    def test_3click_careful_button(self):
+    def test_click_careful_button(self):
         # 切换至退房审批页面
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[1]/span[2]'))).click()
         # 初审

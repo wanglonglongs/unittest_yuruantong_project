@@ -10,6 +10,7 @@ from yuruantong_pc.common.yaml_helper import YamlHelper
 from yuruantong_pc.common.packaging_methon.yu_ruan_login import LoginPage
 from yuruantong_pc.common.packaging_methon import yu_ruan_common
 from nb_log import LogManager
+import datetime
 
 
 class landlordCheckOutCase(unittest.TestCase):
@@ -103,7 +104,8 @@ class landlordCheckOutCase(unittest.TestCase):
     # 备注信息
     def test_8_click_landlord_button(self):
         # 备注
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[14]/div/div/div/div/div/textarea'))).send_keys('%Y-%m-%d %H:%M:%S')
+        current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[7]/div/div/div[2]/form/div[14]/div/div/div/div/div/textarea'))).send_keys("自动化测试时间:" + current_time)
 
     # 提交退房
     def test_9_click_landlord_button(self):
