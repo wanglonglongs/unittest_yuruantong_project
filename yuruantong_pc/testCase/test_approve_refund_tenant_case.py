@@ -39,7 +39,7 @@ class approveRefundTenant(unittest.TestCase):
 
     def test_approve_refund_tenant_openTag_page(self):
         # 进入租客审批界面
-        self.driver.get('http://test.yuruantong.com/amp/approval/?v=#/businessTenant')
+        self.driver.get('http://test.v1.yuruantong.com/approval/?#/businessTenant')
 
         time.sleep(3)
         # 点击租客退房 进入

@@ -32,6 +32,7 @@ class wholeManagementCase(unittest.TestCase):
         cls.common_utill = yu_ruan_common
 
     def test_login_yuRuanTong(self):
+        """ 登录 """
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
         # 调用login()方法
@@ -42,13 +43,15 @@ class wholeManagementCase(unittest.TestCase):
         self.logger.info('断言成功：登录寓软通账号成功！')
 
     def test_openTag_page(self):
+        """ 切换整租页面 """
         # 重新进入整租页面中
-        self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
+        self.driver.get('http://test.v1.yuruantong.com/wholeTenement/')
         register_landlord_but_title = self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/button[1]'))).text
         assert register_landlord_but_title == "登记房东", f"{self.logger.error('断言失败：未进入整租页面！')}"
         self.logger.info('断言成功：已进入整租页面！')
 
     def test_pen_register_landlord(self):
+        """ 进入登记房东页面 """
         # 进入登记房东整租页面 点击登记房东按钮
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/button[1]/span'))).click()
         basic_information_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[1]/span'))).text
@@ -57,7 +60,7 @@ class wholeManagementCase(unittest.TestCase):
 
     # 填写登记基本信息
     def test_write_basic_information(self):
-        '''    填写房东基本信息    '''
+        '''    房东基本信息    '''
 
         # 所属店面选择
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[2]/div[1]/div/div/div/div/div/input'))).click()
@@ -163,67 +166,71 @@ class wholeManagementCase(unittest.TestCase):
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[6]/div[12]/div/div/div/div/div/div[1]/div/div[1]/input'))).click()
         # 累计免租期下拉选择
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[13]/div[1]/div[1]/ul/li[1]/span'))).click()
-        self.logger.info("托管信息填写成功 -success")
-
-    # 填写交割信息
-    def test_write_delivery_information(self):
-        ''' 填写交割信息 '''
-        time.sleep(1)
-        # 电表底数
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
-        # 气表底数
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[2]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
-        # 副电表底数
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[3]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(1))
-        # 水表底数
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[4]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
-        # 副气表底数
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[5]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
-        # 热水表底数
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[6]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
-        # 副水表底数
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[7]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
-        self.logger.info("交割信息填写成功 -success")
-
-    # 填写扣款信息
-    def test_write_deduct_money_information(self):
-        ''' 填写扣款信息 '''
-        time.sleep(1)
-        # 扣除费用
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[12]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
-        # 违约退房
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[12]/div[2]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
-        # 东西丢失
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[12]/div[3]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
-        # 转租扣除费
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[12]/div[4]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
-        # 杂物处理费
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[12]/div[5]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(1))
-        self.logger.info("扣款信息填写成功 -success")
-
-    # 填写其他信息 + 备注
-    def test_write_other_information(self):
-        ''' 填写其他信息 '''
-        time.sleep(1)
-        # 门卡号
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[14]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(7))
-        # 气卡号
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[14]/div[2]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(7))
-        # 水卡号
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[14]/div[3]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(8))
-        # 电卡号
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[14]/div[4]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(8))
+        self.logger.info("(房东) 托管信息")
 
         # 备注 当前时间
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[16]/div/div/div/div/div/div/textarea'))).send_keys("自动化测试时间:" + current_time)
-        self.logger.info("其他信息填写成功 -success")
+        self.wait.until(EC.presence_of_element_located((By.XPATH,
+                                                        '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[16]/div/div/div/div/div/div/textarea'))).send_keys(
+            "自动化测试时间:" + current_time)
+        self.logger.info("(房东) 其他信息")
         time.sleep(2)
 
         # 点击下一步
-        self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[3]/button[2]'))).click()
+        self.wait.until(EC.element_to_be_clickable(
+            (By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[3]/button[2]'))).click()
         self.logger.info("(房东) 托管信息")
         time.sleep(3)
+    # # 填写交割信息
+    # def test_write_delivery_information(self):
+    #     ''' 填写交割信息 '''
+    #     time.sleep(1)
+    #     # 电表底数
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
+    #     # 气表底数
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[2]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
+    #     # 副电表底数
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[3]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(1))
+    #     # 水表底数
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[4]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
+    #     # 副气表底数
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[5]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
+    #     # 热水表底数
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[6]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
+    #     # 副水表底数
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[8]/div[7]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
+    #     self.logger.info("(房东)交割信息")
+    #
+    # # 填写扣款信息
+    # def test_write_deduct_money_information(self):
+    #     ''' 填写扣款信息 '''
+    #     time.sleep(1)
+    #     # 扣除费用
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[12]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
+    #     # 违约退房
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[12]/div[2]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
+    #     # 东西丢失
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[12]/div[3]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
+    #     # 转租扣除费
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[12]/div[4]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
+    #     # 杂物处理费
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[12]/div[5]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(1))
+    #     self.logger.info("(房东) 扣款信息")
+    #
+    # # 填写其他信息 + 备注
+    # def test_write_other_information(self):
+    #     ''' 填写其他信息 '''
+    #     time.sleep(1)
+    #     # 门卡号
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[14]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(7))
+    #     # 气卡号
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[14]/div[2]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(7))
+    #     # 水卡号
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[14]/div[3]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(8))
+    #     # 电卡号
+    #     self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[2]/form/div[14]/div[4]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(8))
+
+
 
     # 填写物品管理页面
     def test_write_Item_information(self):
@@ -252,7 +259,6 @@ class wholeManagementCase(unittest.TestCase):
 
         # 点击下一步按钮
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div[2]/div/div[4]/div[3]/button[2]'))).click()
-        self.logger.info("账单信息页面 -success")
         time.sleep(3)
 
     # 上传合同信息 并提交初审
@@ -278,9 +284,8 @@ class wholeManagementCase(unittest.TestCase):
         assert add_prompt_landlord_success == "保存成功", f"{self.logger.error('断言失败：登记房东失败！')}"
         self.logger.info('断言成功：登记房东成功！')
 
-
     @classmethod
     def tearDownClass(cls):
-        time.sleep(10)
+        time.sleep(8)
         # 关闭浏览器对象
         cls.driver.quit()

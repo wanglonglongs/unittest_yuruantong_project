@@ -38,7 +38,7 @@ class landlordCheckOutCase(unittest.TestCase):
     def test_2_jump_whole_page(self):
         time.sleep(3)
         # 创建LoginPage对象
-        self.driver.get("http://test.yuruantong.com/amp/wholeTenement/")
+        self.driver.get("http://test.v1.yuruantong.com/wholeTenement/")
         self.logger.info("重新进入整租页面 -success")
 
     # 房东退房

@@ -31,20 +31,17 @@ class examineApproveCase(unittest.TestCase):
         login_page = LoginPage(self.driver)
         # 调用login()方法
         login_page.login("18196627126", "aaaa123456")
-        time.sleep(5)
+        time.sleep(3)
         account_show_title = self.wait.until(EC.presence_of_element_located(
             (By.XPATH, '//*[@id="mainDiv"]/div/div[2]/div[1]/div[1]/div[1]/div[3]/div[2]/div/div/div/div/span'))).text
         assert account_show_title == "李一昂", f"{self.logger.error('断言失败：登录寓软通账号失败！')}"
         self.logger.info('断言成功：登录寓软通账号成功！')
 
     def test_jump_examine_page(self):
-        time.sleep(3)
         # 创建LoginPage对象
-        self.driver.get("http://test.yuruantong.com/amp/approval/")
-        self.logger.info("跳转房东审批页面成功 -success")
         time.sleep(3)
         # 重新进入整租页面中
-        self.driver.get("http://test.yuruantong.com/amp/approval/")
+        self.driver.get("http://test.v1.yuruantong.com/approval/")
         register_landlord_but_title = self.wait.until(
             EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[2]/table/thead/tr/th[17]/div'))).text
         assert register_landlord_but_title == "审批", f"{self.logger.error('断言失败：未进入房东审批页面！')}"
@@ -59,7 +56,7 @@ class examineApproveCase(unittest.TestCase):
         # 弹框 alert 登记房东审批
         preliminary_examination = 'document.querySelector("body > div:nth-child(4) > div > div > div.el-dialog__body > div > div:nth-child(2) > button.el-button.el-button--small.external-btn-size.green-color.font-color").click()'
         self.driver.execute_script(preliminary_examination)
-        time.sleep(5)
+        time.sleep(4)
         self.logger.info("通过房东初审 -success")
 
         # 复审
@@ -70,7 +67,7 @@ class examineApproveCase(unittest.TestCase):
         # 弹框 alert 登记房东复审
         reexamine1 = 'document.querySelector("body > div:nth-child(6) > div > div > div.el-dialog__body > div > div:nth-child(2) > button.el-button.el-button--small.external-btn-size.green-color.font-color").click()'
         self.driver.execute_script(reexamine1)
-        time.sleep(5)
+        time.sleep(2)
         self.logger.info("房东审批成功 -success")
 
     @classmethod

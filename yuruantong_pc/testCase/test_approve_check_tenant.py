@@ -36,7 +36,7 @@ class approveCheckTenant(unittest.TestCase):
 
     def test_approve_tenant_openTag_page(self):
         # 进入租客审批界面
-        self.driver.get('http://test.yuruantong.com/amp/approval/?#/businessTenant')
+        self.driver.get('http://test.v1.yuruantong.com/approval/?#/businessTenant')
 
     # 租客审批
     def test_approve_tenant_detail(self):

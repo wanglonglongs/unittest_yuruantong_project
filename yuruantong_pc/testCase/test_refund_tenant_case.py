@@ -42,7 +42,7 @@ class refundTenant(unittest.TestCase):
         time.sleep(2)
     def test_refund_tenant_openTag_page(self):
         # 重新进入整租页面中
-        self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
+        self.driver.get('http://test.v1.yuruantong.com/wholeTenement/')
 
     # 租赁状态已租选择
     def test_lease_status_choose(self):
