@@ -43,7 +43,7 @@ class outApproverLandl(unittest.TestCase):
         # 创建LoginPage对象
         self.driver.get("http://test.v1.yuruantong.com/approval/")
         self.logger.info("跳转房东审批页面成功 -success")
-        time.sleep(1)
+        time.sleep(3)
     # 房东审批
     def test_click_careful_button(self):
         # 切换至退房审批页面

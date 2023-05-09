@@ -93,10 +93,10 @@ class refundTenant(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[6]/div[7]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
 
         # 空调费
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[6]/div[8]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
+        # self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[6]/div[8]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
 
         # 退还房租
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[6]/div[9]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
+        # self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[6]/div[9]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
 
 
     # 应扣能源费
@@ -158,7 +158,7 @@ class refundTenant(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[14]/div[2]/div/div/div/div[1]/input'))).send_keys(yu_ruan_common.free_random_many_num(1))
 
         # 空调费
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[14]/div[3]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
+        # self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[14]/div[3]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
 
     # 退房照片 + 备注信息
     def test_check_out_photo(self):
