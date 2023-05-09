@@ -29,6 +29,7 @@ class approveRefundTenant(unittest.TestCase):
         cls.logger = LogManager('租客退房审批').get_logger_and_add_handlers(10, log_filename='审批.log')
 
     def test_approve_refund_tenant_login(self):
+        ''' 登录 '''
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
 
@@ -38,6 +39,7 @@ class approveRefundTenant(unittest.TestCase):
         time.sleep(2)
 
     def test_approve_refund_tenant_openTag_page(self):
+        ''' 切换租客审批界面 '''
         # 进入租客审批界面
         self.driver.get('http://test.v1.yuruantong.com/approval/?#/businessTenant')
 
@@ -48,13 +50,15 @@ class approveRefundTenant(unittest.TestCase):
 
     # 租客审批
     def test_approve_refund_tenant_detail(self):
+        ''' 租客退房初审/复审 '''
         # 点击租客确认
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[13]/div/div/div'))).click()
 
         time.sleep(2)
         # 备注 当前时间
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[6]/div/div/div[2]/div/div[2]/div[2]/div/textarea'))).send_keys(current_time)
+        self.wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/div[6]/div/div/div[2]/div/div[2]/div[2]/div/textarea'))).send_keys("自动测试时间:" + current_time)
+        time.sleep(2)
 
         # 点击租客确认弹框 通过
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[6]/div/div/div[2]/div/div[3]/button[2]'))).click()

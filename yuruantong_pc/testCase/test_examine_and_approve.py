@@ -13,7 +13,7 @@ from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
 
 class examineApproveCase(unittest.TestCase):
-    """   房东审批    """
+    """   登记房东审批    """
 
     @classmethod
     def setUpClass(cls):
@@ -27,6 +27,7 @@ class examineApproveCase(unittest.TestCase):
         cls.common_utill = yu_ruan_common
 
     def test_login_yuRuanTong(self):
+        ''' 登录 '''
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
         # 调用login()方法
@@ -38,6 +39,7 @@ class examineApproveCase(unittest.TestCase):
         self.logger.info('断言成功：登录寓软通账号成功！')
 
     def test_jump_examine_page(self):
+        ''' 切换房东审批界面 '''
         # 创建LoginPage对象
         time.sleep(3)
         # 重新进入整租页面中
@@ -49,6 +51,7 @@ class examineApproveCase(unittest.TestCase):
 
     # 房东审批
     def test_click_careful_button(self):
+        ''' 登记房东初审/复审 '''
         # 初审
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[17]/div/div'))).click()
         time.sleep(2)
@@ -56,8 +59,9 @@ class examineApproveCase(unittest.TestCase):
         # 弹框 alert 登记房东审批
         preliminary_examination = 'document.querySelector("body > div:nth-child(4) > div > div > div.el-dialog__body > div > div:nth-child(2) > button.el-button.el-button--small.external-btn-size.green-color.font-color").click()'
         self.driver.execute_script(preliminary_examination)
-        time.sleep(4)
+        time.sleep(5)
         self.logger.info("通过房东初审 -success")
+
 
         # 复审
         reexamine = 'document.querySelector("#app > div > div > div > div:nth-child(2) > div > div:nth-child(2) > div > div > div > div.el-table__inner-wrapper > div.el-table__body-wrapper > div > div.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default > div > table > tbody > tr:nth-child(1) > td.el-table_1_column_19.is-center.el-table-fixed-column--right.el-table__cell > div > div > div").click()'

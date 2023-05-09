@@ -32,7 +32,7 @@ class checkInTenant(unittest.TestCase):
         cls.logger = LogManager('登记租客').get_logger_and_add_handlers(10,log_filename='登记租客.log')
 
     def test_register_tenant_login_yuRuanTong(self):
-
+        ''' 登记 '''
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
 
@@ -41,6 +41,7 @@ class checkInTenant(unittest.TestCase):
         self.logger.info("登记租客-登录")
 
     def test_register_tenant_openTag_page(self):
+        ''' 切换整租页面 '''
         # 点击菜单选项栏-房源
         self.wait.until(EC.element_to_be_clickable(
             (By.XPATH, self.element["MENU_HOUSING_RESOURCES"]))).click()
@@ -216,7 +217,7 @@ class checkInTenant(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        time.sleep(10)
+        time.sleep(6)
         # 关闭浏览器对象
         cls.driver.quit()
 

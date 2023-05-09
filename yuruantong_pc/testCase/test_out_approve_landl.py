@@ -30,6 +30,7 @@ class outApproverLandl(unittest.TestCase):
         cls.common_utill = yu_ruan_common
 
     def test_login_yuRuanTong(self):
+        ''' 登录 '''
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
         # 调用login()方法
@@ -39,6 +40,7 @@ class outApproverLandl(unittest.TestCase):
         self.logger.info("登录寓软通账号成功 -success")
 
     def test_jump_examine_page(self):
+        ''' 切换房东审批页面 '''
         time.sleep(3)
         # 创建LoginPage对象
         self.driver.get("http://test.v1.yuruantong.com/approval/")
@@ -46,6 +48,7 @@ class outApproverLandl(unittest.TestCase):
         time.sleep(3)
     # 房东审批
     def test_click_careful_button(self):
+        ''' 房东初审/确认/复审 '''
         # 切换至退房审批页面
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[1]/span[2]'))).click()
         # 初审

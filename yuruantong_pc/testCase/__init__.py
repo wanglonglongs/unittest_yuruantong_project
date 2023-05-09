@@ -72,15 +72,15 @@ def all_case():
     suite.addTest(approveRefundTenant("test_approve_refund_tenant_detail"))
 
     # 房东退房
-    suite.addTest(landlordCheckOutCase("test_1_login_yuRuanTong"))
-    suite.addTest(landlordCheckOutCase("test_2_jump_whole_page"))
-    suite.addTest(landlordCheckOutCase("test_3_click_landlord_button"))
-    suite.addTest(landlordCheckOutCase("test_4_click_landlord_button"))
-    suite.addTest(landlordCheckOutCase("test_5_click_landlord_button"))
-    suite.addTest(landlordCheckOutCase("test_6_click_landlord_button"))
-    suite.addTest(landlordCheckOutCase("test_7_click_landlord_button"))
-    suite.addTest(landlordCheckOutCase("test_8_click_landlord_button"))
-    suite.addTest(landlordCheckOutCase("test_9_click_landlord_button"))
+    suite.addTest(landlordCheckOutCase("test_login_yuRuanTong"))
+    suite.addTest(landlordCheckOutCase("test_jump_whole_page"))
+    suite.addTest(landlordCheckOutCase("test_switch_tag"))
+    suite.addTest(landlordCheckOutCase("test_landlord_basics_info"))
+    suite.addTest(landlordCheckOutCase("test_refundable_proceeds"))
+    suite.addTest(landlordCheckOutCase("test_amount_deducted_landlord"))
+    suite.addTest(landlordCheckOutCase("test_refund_photo"))
+    suite.addTest(landlordCheckOutCase("test_landlord_remark"))
+    suite.addTest(landlordCheckOutCase("test_click_landlord_button"))
 
     # 房东退房审批
     suite.addTest(outApproverLandl("test_login_yuRuanTong"))

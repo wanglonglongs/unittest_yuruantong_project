@@ -26,6 +26,7 @@ class approveCheckTenant(unittest.TestCase):
         cls.logger = LogManager('登记租客审批').get_logger_and_add_handlers(10, log_filename='审批.log')
 
     def test_approve_tenant_login_yuRuanTong(self):
+        ''' 登录 '''
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
 
@@ -35,11 +36,13 @@ class approveCheckTenant(unittest.TestCase):
         time.sleep(2)
 
     def test_approve_tenant_openTag_page(self):
+        ''' 切换租客审批界面 '''
         # 进入租客审批界面
         self.driver.get('http://test.v1.yuruantong.com/approval/?#/businessTenant')
 
     # 租客审批
     def test_approve_tenant_detail(self):
+        ''' 登记租客 初审/复审 '''
         # 点击初审
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[16]/div/div/div'))).click()
 

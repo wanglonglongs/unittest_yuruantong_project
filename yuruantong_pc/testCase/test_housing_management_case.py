@@ -235,8 +235,6 @@ class wholeManagementCase(unittest.TestCase):
     # 填写物品管理页面
     def test_write_Item_information(self):
         ''' 进入物品管理页面 '''
-        time.sleep(2)
-
         bill_preview_show_title = self.wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/button/span'))).text
         print(bill_preview_show_title)
         assert bill_preview_show_title == "添加", f"{self.logger.error('断言失败：未进入物品登记页面！')}"
@@ -286,6 +284,6 @@ class wholeManagementCase(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        time.sleep(8)
+        time.sleep(5)
         # 关闭浏览器对象
         cls.driver.quit()
