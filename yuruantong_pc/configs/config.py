@@ -5,3 +5,4 @@ wait_timeout = 5
 wait_poll_frequency = 0.5
 # url
 url = "http://test.yuruantong.com/amp/#/login?redirect=/index"
+v1_url = "http://test.v1.yuruantong.com/wholeTenement/"

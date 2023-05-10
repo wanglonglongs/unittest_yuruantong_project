@@ -32,7 +32,7 @@ class refundTenant(unittest.TestCase):
         cls.wait = WebDriverWait(cls.driver, 10, poll_frequency=0.5)
         cls.logger = LogManager('租客退房').get_logger_and_add_handlers(10,log_filename='租客退房.log')
 
-    def test_1refund_tenant_login_yuRuanTong(self):
+    def test_refund_tenant_login_yuRuanTong(self):
         ''' 登录 '''
         # 创建LoginPage对象
         login_page = LoginPage(self.driver)
@@ -41,13 +41,13 @@ class refundTenant(unittest.TestCase):
         login_page.login("18196627126", "aaaa123456")
         self.logger.info("租客退房-登录-success")
         time.sleep(2)
-    def test_2refund_tenant_openTag_page(self):
+    def test_refund_tenant_openTag_page(self):
         ''' 切换整租界面 '''
         # 重新进入整租页面中
         self.driver.get('http://test.v1.yuruantong.com/wholeTenement/')
 
     # 租赁状态已租选择
-    def test_3lease_status_choose(self):
+    def test_lease_status_choose(self):
         ''' 租赁状态筛选 '''
         # 租赁状态下拉
         lease_status = f'document.querySelector("#app > div > div:nth-child(2) > div > div:nth-child(1) > div > div.el-card__header > div > div > div > form > div:nth-child(2) > div > div > div > input").click()'
@@ -64,7 +64,7 @@ class refundTenant(unittest.TestCase):
         self.logger.info("筛选已租状态完成-success")
 
     # 点击租客退房
-    def test_4enter_refund_tenant(self):
+    def test_enter_refund_tenant(self):
         ''' 进入租客退房界面 '''
         # 点击操作按钮
         self.wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[1]/section/main/div[1]/div/div/div/div[4]/div[2]/table/tbody/tr[1]/td[24]/div/div[2]/button/span/div/button'))).click()
@@ -74,7 +74,7 @@ class refundTenant(unittest.TestCase):
         self.logger.info("进入租客退房界面-success")
 
     # 进入租客退房操作界面,信息填写 (应退还给租客)
-    def test_5operation_refund_tenant(self):
+    def test_operation_refund_tenant(self):
         ''' 填写应退还租客信息 '''
         # 退还押金
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[6]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(3))
@@ -106,7 +106,7 @@ class refundTenant(unittest.TestCase):
 
 
     # 应扣能源费
-    def test_6energy_charges_deducted(self):
+    def test_energy_charges_deducted(self):
         ''' 填写应扣能源费 '''
         # 水费-上次底数
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[8]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(1))
@@ -147,7 +147,7 @@ class refundTenant(unittest.TestCase):
         time.sleep(1)
 
     # 应扣其他费
-    def test_7other_fees_deducted(self):
+    def test_other_fees_deducted(self):
         ''' 填写应扣其他费 '''
         # 违约金
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[13]/div[1]/div/div/div/div/input'))).send_keys(yu_ruan_common.free_random_many_num(2))
@@ -172,7 +172,7 @@ class refundTenant(unittest.TestCase):
         time.sleep(1)
 
     # 退房照片 + 备注信息
-    def test_8check_out_photo(self):
+    def test_check_out_photo(self):
         ''' 填写照片及备注 '''
         # 身份证照片
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[18]/div/div/div/div/div[1]/div/input'))).send_keys(fr"F:\photo\{yu_ruan_common.free_random_one_num(1, 4)}.jpg")
@@ -182,7 +182,7 @@ class refundTenant(unittest.TestCase):
         self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[2]/div/div[3]/div/div/div[2]/form/div[20]/div/div/div/div/div/textarea'))).send_keys("自动化测试时间:" + current_time)
 
     # 租客退房确认 取消
-    def test_9refund_tenant_confirm(self):
+    def test_refund_tenant_confirm(self):
         ''' 点击退房 '''
         time.sleep(2)
         # 确认
