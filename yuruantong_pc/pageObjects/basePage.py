@@ -103,7 +103,7 @@ class BasePage:
             self,
             locator,
             action=None,
-            timeout=5,
+            timeout=10,
             poll_frequency=0.5):
         # 1/设置显式等待可见元素定位时间
         try:

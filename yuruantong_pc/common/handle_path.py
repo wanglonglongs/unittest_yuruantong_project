@@ -11,7 +11,7 @@ logs_path = os.path.join(project_path, r'outFiles\my_logs')
 # 4、测试数据路径
 testcase_path = os.path.join(project_path, 'data')
 # 5、测试报告路径
-reports_path = os.path.join(project_path, r'result\reports\tmp')
+reports_path = os.path.join(project_path, r'result\report')
 # 6、配置路径
 config_path = os.path.join(project_path, 'configs')
 
@@ -19,6 +19,6 @@ if __name__ == '__main__':
     # print(project_path)
     # print(screenshot_path)
     # print(logs_path)
-    # print(reports_path)
+    print(reports_path)
     # print(testcase_path)
-    print(config_path)
+    #print(config_path)

@@ -7,7 +7,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from yuruantong_pc.common.error_screenshot import Screen
 from yuruantong_pc.common.yaml_helper import YamlHelper
 from yuruantong_pc.common.packaging_methon.yu_ruan_login import LoginPage
 from nb_log import LogManager
@@ -45,7 +44,7 @@ class wholeManagementCase(unittest.TestCase):
     def test_openTag_page(self):
         """ 切换整租页面 """
         # 重新进入整租页面中
-        self.driver.get('http://test.v1.yuruantong.com/wholeTenement/')
+        self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
         register_landlord_but_title = self.wait.until(EC.presence_of_element_located((By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/button[1]'))).text
         assert register_landlord_but_title == "登记房东", f"{self.logger.error('断言失败：未进入整租页面！')}"
         self.logger.info('断言成功：已进入整租页面！')
