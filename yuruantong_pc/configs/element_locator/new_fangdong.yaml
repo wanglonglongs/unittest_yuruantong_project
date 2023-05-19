@@ -16,7 +16,13 @@ RegisterLandLord:
   # 下一步按钮 (房东信息)
   click_landlord_next_btn: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[3]/button[2]']
   # 下一步按钮 (物品信息)
-  click_item_next_btn: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[4]/div[3]/button[2]']
+  click_item_next_btn: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[3]/div[3]/button[2]/span']
+  # 下一步按钮 (预览账单)
+  click_bill_next_btn: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[4]/div[3]/button[2]/span']
+  # 提交初审按钮
+  submit_first_review_btn: [ 'xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[3]/button[2]/span' ]
+  # 提交复审按钮
+  submit_second_review_btn: [ 'xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[3]/button[3]/span' ]
 # ------------  LandlordBaseInfo --------------
 LandlordBaseInfo:
   # 点击店面
@@ -115,15 +121,31 @@ itemInformation:
   # 点击物品名称
   element_item_name_selection: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[3]/table/tbody/tr/td[2]/div/div/div[1]/input']
   # 点击物品名称下拉菜单
-  element_item_name_dropdown: ['xpath','/html/body/div[16]/div[1]/div[1]/ul/li[1]']
+  element_item_name_dropdown: ['xpath','/html/body/div[14]/div[1]/div[1]/ul/li[1]/span']
   # 输入物品数量
   item_number_input: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[3]/table/tbody/tr/td[3]/div/div/input']
   # 输入物品备注
   item_remark_input: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[3]/table/tbody/tr/td[5]/div/div/input']
+  # 点击物品图片
+  item_image_btn: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[3]/table/tbody/tr/td[6]/div/span[1]']
   # 上传物品图片
-  item_image_input: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[3]/table/tbody/tr/td[6]/div/span[1]']
+  item_image_input: ['xpath','/html/body/div[14]/div/div[2]/div/div[1]/div/div/div[1]/div/i']
   # 删除物品按钮
   item_delete_btn: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[3]/table/tbody/tr/td[7]/div/i']
+
+# ------------  uploadContractInfo --------------
+# 上传合同
+uploadContractInfo:
+  # 上传房产证照片
+  title_deeds_input: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[1]/div/div[1]/div/input']
+  # 上传身份证照片
+  identity_card_input: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[2]/div/div[1]/div/input']
+  # 上传委托书照片
+  entrustment_input: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[3]/div/div[1]/div/input']
+  # 原房照片
+  original_house_input: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[4]/div/div[1]/div/input']
+  # 合同上传
+  contract_upload_input: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[5]/div/div[1]/div/input']
 
 
 

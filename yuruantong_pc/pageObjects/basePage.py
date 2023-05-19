@@ -11,6 +11,18 @@ class BasePage:
         self._driver = Driver().get_driver()
 
     # ----------------------封装页面操作------------------------
+    # 0 , 封裝上傳照片-操作
+    def upload_picture(self, locator,text, action=None):
+        '''
+            :param locator: 元素定位： locator定义为包含-元素定位方法-和-定位方式-的包 ----['id','name']
+            :param text: 输入文本的内容
+            :param action: 执行的动作描述,缺省参数
+        '''
+        # 1,元素定位
+        element = self._driver.find_element(*locator)
+        # 2,上傳圖片
+        element.send_keys(text)
+
     # 1、封装-输入-操作
     def input_text(self, locator, text, action=None):
         '''
