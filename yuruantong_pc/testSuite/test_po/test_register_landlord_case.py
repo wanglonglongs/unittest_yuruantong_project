@@ -142,5 +142,5 @@ class TestRegisterLandlordCase():
         time.sleep(5)
 
 
-if __name__ == '__main__':
-    pytest.main(['-s','--reruns=3', '--reruns-delay=3' ,'--html=test_register_landlord_case.html', 'test_register_landlord_case.py'])
+# if __name__ == '__main__':
+#     pytest.main(['-s','--reruns=3', '--reruns-delay=3' ,'--html=test_register_landlord_case.html', 'test_register_landlord_case.py'])
