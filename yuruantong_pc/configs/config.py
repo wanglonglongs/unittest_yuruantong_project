@@ -14,7 +14,7 @@ test_whole_management_url = "http://test.yuruantong.com/amp/wholeTenement/"
 formal_whole_management_url = "http://test.v1.yuruantong.com/wholeTenement/"
 
 # 房东审批页面url
-test_landlord_approval_url = "http://test.yuruantong.com/approval/"
+test_landlord_approval_url = "http://test.yuruantong.com/amp/approval/"
 formal_landlord_approval_url = "http://test.v1.yuruantong.com/approval/"
 
 # 租客审批页面url

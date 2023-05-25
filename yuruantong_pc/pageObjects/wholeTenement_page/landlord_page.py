@@ -172,5 +172,16 @@ class LandlordPage(BasePage):
         self.upload_picture(locator['original_house_input'],originalHouse, action="上传原房照片")
         # 上传合同照片
         # self.input_text(locator['contract_upload_input'],contractUpload, action="上传合同照片")
+    # ------------------------------------------------------------------------------------------------------
 
-
+    def landlord_approval(self):
+        # 读取yaml定位参数locator['landlord_approval']提取键值数据
+        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['Approval']
+        # 点击初审
+        self.click(locator['landlord_first_approval_btn'], action="点击初审")
+        # 点击初审确认按钮
+        self.click(locator['landlord_first_approval_confirm_btn'], action="点击初审确认按钮")
+        # 点击复审
+        self.click(locator['landlord_Review_approval_btn'], action="点击复审")
+        # 点击复审确认按钮
+        self.click(locator['landlord_Review_approval_confirm_btn'], action="点击复审确认按钮")

@@ -1,16 +1,18 @@
 # coding:utf-8
 import time
-
 import allure
 import pytest
 from nb_log import LogManager
-
 from yuruantong_pc.pageObjects.login_page.login_page import LoginPage
 from yuruantong_pc.pageObjects.wholeTenement_page.landlord_page import LandlordPage
 from yuruantong_pc.pageObjects.menu_page.menu_page import MenuPage
 from yuruantong_pc.pageObjects.wholeTenement_page.go_to_page import goToPage
+from yuruantong_pc.common.packaging_methon import yu_ruan_common
 
 
+@allure.suite('登记房东')
+@allure.epic('登记房东')
+@allure.feature('包含账号登录-房东登记流程-并且发起初审')
 class TestRegisterLandlordCase():
     """   登记房东    """
     @pytest.fixture(autouse=True)
@@ -20,13 +22,14 @@ class TestRegisterLandlordCase():
         self.menu_page = MenuPage()
         self.landlord_page = LandlordPage()
         self.go_to_page = goToPage()
-        self.logger = LogManager('登记房东').get_logger_and_add_handlers(10, log_filename='登记房东.log')
+        self.logger = LogManager('登记房东').get_logger_and_add_handlers(10, log_filename='登记房东01.log')
 
     def tear_down_class(self):
         pass
 
-    @pytest.mark.mark_name(regression="回归测试")
-    @allure.description("输入账号密码进行登录-至首页面")
+    @pytest.mark.mark_name("回归测试")
+    @allure.description("输入账号密码进行登录-登陆后跳转至首页面")
+    @allure.story("输入账号密码进行登录")
     @pytest.mark.run(order=1)
     def test_login_case(self):
         """ 登录 """
@@ -35,7 +38,9 @@ class TestRegisterLandlordCase():
         # 执行登录操作
         LoginPage().login('18196627126','aaaa123456')
         time.sleep(3)
+        self.logger.info('登录成功')
 
+    @allure.story("点击房源按钮打开二级菜单")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("点击房源按钮打开二级菜单")
     @pytest.mark.run(order=2)
@@ -44,6 +49,7 @@ class TestRegisterLandlordCase():
         self.menu_page.click_house_resources_button()
         time.sleep(3)
 
+    @allure.story("点击整租按钮进入整租")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("点击二级子菜单打开整租标签页")
     @pytest.mark.run(order=3)
@@ -52,6 +58,7 @@ class TestRegisterLandlordCase():
         self.menu_page.click_whole_management_button()
         time.sleep(3)
 
+    @allure.story("跳转整租子页面")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("跳转整租子页面，绕过shadow-dom操纵元素")
     @pytest.mark.run(order=4)
@@ -60,6 +67,7 @@ class TestRegisterLandlordCase():
         self.go_to_page.go_to_whole_management()
         time.sleep(4)
 
+    @allure.story("点击房东按钮")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("点击登记房东按钮,进入房东登录业务流程页面")
     @pytest.mark.run(order=5)
@@ -69,6 +77,7 @@ class TestRegisterLandlordCase():
         self.landlord_page.click_landlord_button()
         time.sleep(4)
 
+    @allure.story("输入房东基本信息")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("填写房东基本信息内容")
     @pytest.mark.run(order=6)
@@ -76,12 +85,13 @@ class TestRegisterLandlordCase():
         """ 输入房东基本信息 """
         buildingNumber = 'B'
         unitNumber = "1"
-        houseNumber = '1548'
+        houseNumber = f'{yu_ruan_common.free_random_many_num(5)}'
         buildingArea = '510'
         floor = '5'
         allFloor = '20'
         self.landlord_page.landlord_base_info(buildingNumber,unitNumber,houseNumber,buildingArea,floor,allFloor)
 
+    @allure.story("输入房东详细信息")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("填写房东详细信息内容")
     @pytest.mark.run(order=7)
@@ -97,6 +107,7 @@ class TestRegisterLandlordCase():
         self.landlord_page.landlord_info(landlordName,idNumber,iphoneNumber,payeeName,bankCardsNumber,payeeIdNumber,payeePhoneNumber)
         time.sleep(2)
 
+    @allure.story("输入托管信息")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("填写输入托管信息内容")
     @pytest.mark.run(order=8)
@@ -106,6 +117,7 @@ class TestRegisterLandlordCase():
         remark = '托管'
         self.landlord_page.trusteeship_info(housePrice,remark)
 
+    @allure.story("点击下一步")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("点击下一步按钮跳转物品登记信息页面")
     @pytest.mark.run(order=9)
@@ -113,6 +125,7 @@ class TestRegisterLandlordCase():
         """ 点击下一步跳转物品登记信息页面 """
         self.landlord_page.click_landlord_next_btn()
 
+    @allure.story("添加物品信息")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("录入物品信息")
     @pytest.mark.run(order=10)
@@ -123,6 +136,7 @@ class TestRegisterLandlordCase():
         # itemImage = rf"F:\photo\1.jpg"
         self.landlord_page.item_information(itemNumber,itemRemark)
 
+    @allure.story("点击下一步")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("点击下一步跳转预览账单页面")
     @pytest.mark.run(order=11)
@@ -131,6 +145,7 @@ class TestRegisterLandlordCase():
         self.landlord_page.click_item_next_btn()
         time.sleep(8)
 
+    @allure.story("点击下一步")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("点击下一步跳转上传合同页面")
     @pytest.mark.run(order=12)
@@ -138,6 +153,7 @@ class TestRegisterLandlordCase():
         """ 点击下一步跳转上传合同页面 """
         self.landlord_page.click_bill_next_btn()
 
+    @allure.story("上传合同信息")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("上传合同合同信息")
     @pytest.mark.run(order=13)
@@ -149,15 +165,16 @@ class TestRegisterLandlordCase():
         originalHouse = rf"F:\photo\4.jpg"
         self.landlord_page.upload_contract(titleDeeds,identityCard,entrustment,originalHouse)
 
+    @allure.story("提交初审")
     @pytest.mark.mark_name(regression="回归测试")
     @allure.description("进行初审，初审后需要进行审批操作")
     @pytest.mark.run(order=14)
     def test_submit_first_review_btn(self):
         """ 点击提交第一次审核 """
         self.landlord_page.submit_first_review_btn()
-        time.sleep(5)
+        time.sleep(8)
 
 
 if __name__ == '__main__':
-    pytest.main(['-s','--reruns=3', '--reruns-delay=3' ,'--html=test_register_landlord_case.html', 'test_register_landlord_case.py'])
+    pytest.main(['-vs','--reruns=3', '--reruns-delay=3' , 'test_register_landlord_case.py'])
 
