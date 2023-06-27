@@ -122,6 +122,7 @@ class LandlordPage(BasePage):
         self.click(locator['element_renovation_plan_dropdown'], action="点击装修方案下拉菜单")
         # 点击首次付款日期选择
         self.click(locator['element_payment_date_selection'], action="点击首次付款日期选择")
+        time.sleep(1)
         # 点击首次付款日期下拉菜单
         self.click(locator['element_payment_date_dropdown'], action="点击首次付款日期下拉菜单")
         # 点击业务人员

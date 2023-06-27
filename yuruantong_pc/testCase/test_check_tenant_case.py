@@ -58,7 +58,7 @@ class checkInTenant(unittest.TestCase):
         self.logger.info("打开整租管理页面成功-success")
 
         # 重新进入整租页面中
-        self.driver.get('http://test.v1.yuruantong.com/wholeTenement/')
+        self.driver.get('http://test.yuruantong.com/wholeTenement/')
 
     # 租赁状态未租选择
     def test_lease_status_choose(self):

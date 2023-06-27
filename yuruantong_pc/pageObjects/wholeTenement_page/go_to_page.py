@@ -1,5 +1,6 @@
 from yuruantong_pc.pageObjects.basePage import BasePage
-from yuruantong_pc.configs.config import test_whole_management_url, test_landlord_approval_url
+from yuruantong_pc.configs.config import test_whole_management_url, test_landlord_approval_url, \
+    formal_whole_management_url, pp_management_url, pp_url_landlord
 
 
 # 继承基类

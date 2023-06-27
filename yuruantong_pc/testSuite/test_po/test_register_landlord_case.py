@@ -143,7 +143,7 @@ class TestRegisterLandlordCase():
     def test_click_item_next_btn(self):
         """ 点击下一步跳转预览账单页面 """
         self.landlord_page.click_item_next_btn()
-        time.sleep(8)
+        time.sleep(5)
 
     @allure.story("点击下一步")
     @pytest.mark.mark_name(regression="回归测试")

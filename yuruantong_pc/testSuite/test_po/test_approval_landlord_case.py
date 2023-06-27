@@ -75,6 +75,7 @@ class TestApprovalLandlordCase():
     @pytest.mark.run(order=6)
     def test_landlord_approval(self):
         self.landlord_page.landlord_approval()
+        time.sleep(3)
 
 
 if __name__ == '__main__':

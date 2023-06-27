@@ -1,5 +1,5 @@
 from yuruantong_pc.pageObjects.basePage import BasePage
-from yuruantong_pc.configs.config import test_url
+from yuruantong_pc.configs.config import test_url, formal_url, pp_url
 from yuruantong_pc.common.handle_yaml import get_yaml_data
 from yuruantong_pc.common.handle_path import config_path
 import time
