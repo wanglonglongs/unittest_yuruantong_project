@@ -16,7 +16,7 @@ class LoginPage(BasePage):
     def login(self, username, pwd):
         # 读取yaml定位参数locator['LoginPage']提取键值数据
 
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['LoginPage']
+        locator = get_yaml_data(rf'{config_path}\element_locator\loginPageElement.yaml')['LoginPage']
 
         self.input_text(locator['username_input'],username,action='输入账号')
         # 输入密码

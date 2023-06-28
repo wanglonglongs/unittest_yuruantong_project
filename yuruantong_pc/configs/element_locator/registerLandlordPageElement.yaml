@@ -1,13 +1,4 @@
 # -*- coding: utf-8 -*-
-# ------------  LoginPage --------------
-LoginPage:
-  # 账号
-  username_input: ['xpath','/html/body/div/div/div/div[1]/form/div[3]/input']
-  # 密码
-  pwd_input: ['xpath','/html/body/div/div/div/div[1]/form/div[4]/div/input']
-  # 登录按钮
-  login_btn: ['xpath','/html/body/div/div/div/div[1]/form/div[6]/div/button']
-
 # ------------  RegisterLandLord --------------
 #登记房东按钮
 RegisterLandLord:
@@ -146,39 +137,3 @@ uploadContractInfo:
   original_house_input: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[4]/div/div[1]/div/input']
   # 合同上传
   contract_upload_input: ['xpath','//*[@id="app"]/div/div[2]/div[2]/div/div[5]/div[2]/div[2]/div[5]/div/div[1]/div/input']
-
-
-
-# ------------  Menu --------------
-#菜单
-Menu:
-  # 房源
-  house_resources_btn: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/div']
-  # 整租
-  whole_management_btn: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/ul/div[1]/a/li/span']
-  #审批
-  approval_btn: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[5]/li/div/span']
-  # 房东审批
-  landlord_approval_btn: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[5]/li/ul/div[1]/a/li/span']
-  #租客审批
-  tenants_approval_btn: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[5]/li/ul/div[2]/a/li/span']
-
-# ------------  registerItems --------------
-# 物品信息
-Approval:
-  # 房东初审
-  landlord_first_approval_btn: ['xpath','//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[17]/div/div']
-  # 房东审批弹框 alert 确定按钮
-  landlord_first_approval_confirm_btn : ['xpath','/html/body/div[4]/div/div/div[2]/div/div[2]/button[2]']
-  # 房东复审
-  landlord_Review_approval_btn: ['xpath','//*[@id="app"]/div/div/div/div[2]/div/div[2]/div/div/div/div[1]/div[3]/div/div[1]/div/table/tbody/tr[1]/td[19]/div/div/div']
-  # 房东复审弹框 alert 确定按钮
-  landlord_Review_approval_confirm_btn : ['xpath','/html/body/div[6]/div/div/div[2]/div/div[2]/button[2]']
-  # 点击更多按钮(登记房东审批)
-  more_btn: ['xpath','//*[@id="app"]/div/div/div/div[2]/div/div[1]/div/div/div/div/form/div[5]/button[2]']
-  # 点击审批状态
-  approval_status_selection: ['xpath','//*[@id="app"]/div/div/div/div[2]/div/div[1]/div/div/div/div/form/div[6]/div[2]/div/div/div/div/div/input']
-  # 选择审批状态
-  approval_status_dropdown: ['xpath','/html/body/div[2]/div[5]/div/div/div[1]/ul/li[1]']
-  # 点击搜索按钮
-  search_btn: ['xpath','//*[@id="app"]/div/div/div/div[2]/div/div[1]/div/div/div/div/form/div[5]/button[1]']

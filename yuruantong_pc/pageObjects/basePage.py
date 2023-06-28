@@ -11,6 +11,11 @@ class BasePage:
         self._driver = Driver().get_driver()
 
     # ----------------------封装页面操作------------------------
+    # -1
+    def click_js(self, locator,action=None):
+        time.sleep(1)
+        self._driver.execute_script(locator)
+
     # 0 , 封裝上傳照片-操作
     def upload_picture(self, locator,text, action=None):
         '''

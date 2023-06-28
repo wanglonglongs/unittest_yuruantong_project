@@ -13,7 +13,7 @@ class SearchPage(BasePage):
     # ------------------------------------------------------------------------------------------------------------------
     def landlord_approval_status_search(self):
         # 读取yaml定位参数locator['Approval']提取键值数据
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['Approval']
+        locator = get_yaml_data(rf'{config_path}\element_locator\approvalLandlordPageElement.yaml')['Approval']
         # 点击更多按钮
         self.click(locator['more_btn'],action="点击登记按钮")
         # 点击审批状态

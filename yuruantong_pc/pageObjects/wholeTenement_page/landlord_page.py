@@ -10,28 +10,28 @@ class LandlordPage(BasePage):
     # 点击房东按钮
     def click_landlord_button(self):
         # 读取yaml定位参数locator['LoginPage']提取键值数据
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['RegisterLandLord']
+        locator = get_yaml_data(rf'{config_path}\element_locator\registerLandlordPageElement.yaml')['RegisterLandLord']
         # 点击登记房东按钮
         self.click(locator['register_landlord_btn'],action="点击登记按钮")
 
     # 点击下一步按钮 （房东信息）
     def click_landlord_next_btn(self):
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['RegisterLandLord']
+        locator = get_yaml_data(rf'{config_path}\element_locator\registerLandlordPageElement.yaml')['RegisterLandLord']
         self.click(locator['click_landlord_next_btn'],action="点击下一步按钮")
 
     # 点击下一步按钮 （物品信息）
     def click_item_next_btn(self):
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['RegisterLandLord']
+        locator = get_yaml_data(rf'{config_path}\element_locator\registerLandlordPageElement.yaml')['RegisterLandLord']
         self.click(locator['click_item_next_btn'],action="点击下一步按钮")
 
     # 点击下一步按钮 (账单信息)
     def click_bill_next_btn(self):
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['RegisterLandLord']
+        locator = get_yaml_data(rf'{config_path}\element_locator\registerLandlordPageElement.yaml')['RegisterLandLord']
         self.click(locator['click_bill_next_btn'],action="点击下一步按钮")
 
     # 点击房东初审按钮
     def submit_first_review_btn(self):
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['RegisterLandLord']
+        locator = get_yaml_data(rf'{config_path}\element_locator\registerLandlordPageElement.yaml')['RegisterLandLord']
         self.click(locator['submit_first_review_btn'],action="点击房东初审按钮")
     # ----------------------------------------------------------------------------------------------------
     # 房东工作流页面-landlord workflow             page-1  登记房东
@@ -40,7 +40,7 @@ class LandlordPage(BasePage):
     # 基本信息
     def landlord_base_info(self, buildingNumber=None, unitNumber=None, houseNumber=None, buildingArea=None, floor=None, allFloor=None):
         # 读取yaml定位参数locator['LandlordBaseInfo']提取键值数据
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['LandlordBaseInfo']
+        locator = get_yaml_data(rf'{config_path}\element_locator\registerLandlordPageElement.yaml')['LandlordBaseInfo']
         # 点击店面
         self.click(locator['element_shop_selection'], action="点击店面下拉")
         # 点击店面下拉菜单
@@ -78,7 +78,7 @@ class LandlordPage(BasePage):
     def landlord_info(self, landlordName=None, idNumber=None, iphoneNumber=None, payeeName=None, bankCardsNumber=None,
                       payeeIdNumber=None, payeePhoneNumber=None):
         # 读取yaml定位参数locator['LandlordInfo']提取键值数据
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['LandlordInfo']
+        locator = get_yaml_data(rf'{config_path}\element_locator\registerLandlordPageElement.yaml')['LandlordInfo']
         # 输入房东姓名
         self.input_text(locator['landlord_name_input'], landlordName, action="输入房东姓名")
         # 输入证件号码
@@ -99,13 +99,14 @@ class LandlordPage(BasePage):
         self.click(locator['element_channel_source_dropdown'], action="点击渠道来源下拉菜单")
         # 点击房东包物业
         self.click(locator['element_landlord_Property_selection'], action="点击房东包物业")
+        time.sleep(1)
         # 点击房东包物业下拉菜单
         self.click(locator['element_landlord_Property_dropdown'], action="点击房东包物业下拉菜单")
 
     # 托管信息
     def trusteeship_info(self, housePrice=None, remark=None):
         # 读取yaml定位参数locator['TrusteeshipInfo']提取键值数据
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['TrusteeshipInfo']
+        locator = get_yaml_data(rf'{config_path}\element_locator\registerLandlordPageElement.yaml')['TrusteeshipInfo']
         # 点击合同期限 3年
         self.click(locator['joint_deadline_btn'], action="点击合同期限")
         # 输入收房价格
@@ -143,7 +144,7 @@ class LandlordPage(BasePage):
     # 物品登记
     def item_information(self, itemNumber=None, itemRemark=None, itemImage=None):
         # 读取yaml定位参数locator['itemInformation']提取键值数据
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['itemInformation']
+        locator = get_yaml_data(rf'{config_path}\element_locator\registerLandlordPageElement.yaml')['itemInformation']
         # 点击物品名称
         self.click(locator['element_item_name_selection'], action="点击物品名称")
         # 点击物品名称下拉菜单
@@ -162,7 +163,7 @@ class LandlordPage(BasePage):
     # ----------------------------------------------------------------------------------------------------
     def upload_contract(self, titleDeeds=None, identityCard=None, entrustment=None, originalHouse=None):
         # 读取yaml定位参数locator['contractInformation']提取键值数据
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['uploadContractInfo']
+        locator = get_yaml_data(rf'{config_path}\element_locator\registerLandlordPageElement.yaml')['uploadContractInfo']
         # 上传房产证照片
         self.upload_picture(locator['title_deeds_input'],titleDeeds, action="上传房产证照片")
         # 上传身份证照片
@@ -177,7 +178,7 @@ class LandlordPage(BasePage):
 
     def landlord_approval(self):
         # 读取yaml定位参数locator['landlord_approval']提取键值数据
-        locator = get_yaml_data(rf'{config_path}\element_locator\new_fangdong.yaml')['Approval']
+        locator = get_yaml_data(rf'{config_path}\element_locator\approvalLandlordPageElement.yaml')['Approval']
         # 点击初审
         self.click(locator['landlord_first_approval_btn'], action="点击初审")
         # 点击初审确认按钮

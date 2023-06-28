@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+# ------------  Menu --------------
+#菜单
+Menu:
+  # 房源
+  house_resources_btn: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/div']
+  # 整租
+  whole_management_btn: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/ul/div[1]/a/li/span']
+  #审批
+  approval_btn: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[5]/li/div/span']
+  # 房东审批
+  landlord_approval_btn: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[5]/li/ul/div[1]/a/li/span']
+  #租客审批
+  tenants_approval_btn: ['xpath','//*[@id="mainDiv"]/div/div[1]/div[2]/div[1]/div/ul/div[5]/li/ul/div[2]/a/li/span']
