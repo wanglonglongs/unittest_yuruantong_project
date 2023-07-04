@@ -23,3 +23,5 @@ class LoginPage(BasePage):
         self.input_text(locator['pwd_input'],pwd,action="输入密码")
         # 点击登录按钮
         self.click(locator['login_btn'],action="点击登录按钮")
+        # 已登陆账号名称
+        return self.get_text(locator['account_name_span'],action="已登陆账号名称")

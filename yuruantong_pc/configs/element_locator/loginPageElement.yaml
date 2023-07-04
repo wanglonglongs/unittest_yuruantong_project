@@ -7,3 +7,5 @@ LoginPage:
   pwd_input: ['xpath','/html/body/div/div/div/div[1]/form/div[4]/div/input']
   # 登录按钮
   login_btn: ['xpath','/html/body/div/div/div/div[1]/form/div[6]/div/button']
+  # 登录成功 账号姓名
+  account_name_span : ['xpath','//*[@id="mainDiv"]/div/div[2]/div[1]/div[1]/div[1]/div[3]/div[2]/div/div/div/div/span']

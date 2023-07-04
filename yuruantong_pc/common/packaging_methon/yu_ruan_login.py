@@ -14,7 +14,7 @@ class LoginPage:
 
     def login(self, username, password):
         # 打开网页
-        self.driver.get("http://jiabang.v0.yuruantong.com/#/login?redirect=/index")
+        self.driver.get("http://test.yuruantong.com/amp/#/login?redirect=/index")
         # 输入账号
         self.wait.until(EC.presence_of_element_located((By.XPATH,self.element["SHOU_YE_ACCOUNT"]))).send_keys(username)
         # 输入密码

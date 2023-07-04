@@ -47,6 +47,7 @@ class BasePage:
 
     # 2、封装-点击-操作
     def click(self, locator, action=None):
+        time.sleep(1)
         # 1、元素定位
         # find_element(定位方式，定位表达式)
         element = self.element_is_visibility(locator)  # "*"号解包

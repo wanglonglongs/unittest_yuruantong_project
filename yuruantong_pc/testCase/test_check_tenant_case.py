@@ -39,7 +39,7 @@ class checkInTenant(unittest.TestCase):
         # 调用login()方法
         login_page.login("18196627126", "aaaa123456")
         self.logger.info("登记租客-登录")
-
+        time.sleep(5)
     def test_register_tenant_openTag_page(self):
         ''' 切换整租页面 '''
         # 点击菜单选项栏-房源
@@ -58,7 +58,7 @@ class checkInTenant(unittest.TestCase):
         self.logger.info("打开整租管理页面成功-success")
 
         # 重新进入整租页面中
-        self.driver.get('http://test.yuruantong.com/wholeTenement/')
+        self.driver.get('http://test.yuruantong.com/amp/wholeTenement/')
 
     # 租赁状态未租选择
     def test_lease_status_choose(self):
