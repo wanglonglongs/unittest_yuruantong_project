@@ -1,3 +1,5 @@
+import time
+
 from yuruantong_pc.pageObjects.basePage import BasePage
 from yuruantong_pc.common.handle_yaml import get_yaml_data
 from yuruantong_pc.common.handle_path import config_path
@@ -66,14 +68,17 @@ class TenantPage(BasePage):
         self.input_text(locator['emergency_phone_input'],emergencyPhone, action="输入紧急联系人电话")
         # 业务人员下拉
         self.click(locator['element_business_person_selection'], action="点击业务人员下拉")
+        time.seep(1)
         # 业务人员选择
         self.click(locator['element_business_person_dropdown'], action="点击业务人员选择")
         # 协助人员下拉
         self.click(locator['element_help_person_selection'], action="点击协助人员下拉")
+        time.seep(1)
         # 协助人员选择
         self.click(locator['element_help_person_dropdown'], action="点击协助人员选择")
         # 渠道来源下拉
         self.click(locator['element_channel_source_selection'], action="点击渠道来源下拉")
+        time.seep(1)
         # 渠道来源选择
         self.click(locator['element_channel_source_dropdown'], action="点击渠道来源选择")
     # ----------------------------------------------------------------------------------------------------
@@ -89,6 +94,7 @@ class TenantPage(BasePage):
         self.click(locator['element_rental_period_years_dropdown'],action="点击租赁期限选择")
         # 租赁期限下拉 月
         self.click(locator['element_rental_period_month_selection'],action="点击租赁期限下拉")
+        time.seep(1)
         # 租赁期限选择 月
         self.click(locator['element_rental_period_month_dropdown'],action="点击租赁期限选择")
         # 点击缴费方式
